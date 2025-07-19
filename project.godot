@@ -13,7 +13,7 @@ config_version=5
 config/name="Indie Game Dev"
 config/version="0.1.0"
 run/main_scene="res://menu_scenes/opening_cinematic/opening_with_logo.tscn"
-config/features=PackedStringArray("4.4")
+config/features=PackedStringArray("4.4", "C#")
 config/icon="res://assets/game_logo/icon.png"
 
 [autoload]
