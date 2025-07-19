@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://crgt8odc06uei"]
+
+[ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://scenes/game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
+[ext_resource type="Script" uid="uid://b0lx6s55mura4" path="res://scenes/game_scene/hud_elements/BubblesBox.cs" id="5_j8flk"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftSideLayoutBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_vertical = 2
+
+[node name="BubblesBox" type="Control" parent="LeftSideLayoutBox"]
+custom_minimum_size = Vector2(220, 60)
+layout_mode = 2
+size_flags_vertical = 2
+script = ExtResource("5_j8flk")
+_bubbleBarItemPrefab = ExtResource("5_ducuf")
+
+[node name="ColorRect" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LeftSideLayoutBox/BubblesBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BubbleBarContainer" type="VBoxContainer" parent="LeftSideLayoutBox/BubblesBox/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DummyBubbleBarItem" parent="LeftSideLayoutBox/BubblesBox/MarginContainer/BubbleBarContainer" instance=ExtResource("5_ducuf")]
+layout_mode = 2
+tooltip_text = "This is a dummy category, but a useful description belongs here"
