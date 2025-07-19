@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace IndieGameDev.Menus;
 
 public partial class MyMainMenu : Control
 {
