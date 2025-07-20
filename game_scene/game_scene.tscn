@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://crgt8odc06uei"]
+[gd_scene load_steps=4 format=3 uid="uid://crgt8odc06uei"]
 
-[ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://scenes/game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
-[ext_resource type="Script" uid="uid://b0lx6s55mura4" path="res://scenes/game_scene/hud_elements/BubblesBox.cs" id="5_j8flk"]
+[ext_resource type="PackedScene" uid="uid://bdakja14n1wqw" path="res://game_scene/resize_parent_to_fit_children.tscn" id="3_o81xq"]
+[ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
+[ext_resource type="Script" uid="uid://b0lx6s55mura4" path="res://game_scene/hud_elements/BubblesBox.cs" id="5_j8flk"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -28,6 +29,9 @@ layout_mode = 2
 size_flags_vertical = 2
 script = ExtResource("5_j8flk")
 _bubbleBarItemPrefab = ExtResource("5_ducuf")
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="LeftSideLayoutBox/BubblesBox" instance=ExtResource("3_o81xq")]
+_setSize = false
 
 [node name="ColorRect" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
 layout_mode = 1
