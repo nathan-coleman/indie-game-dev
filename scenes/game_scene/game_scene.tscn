@@ -151,134 +151,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Dummy Game Sale"
 
-[node name="BottomLayoutBox" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.9
-anchor_right = 0.75
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-
-[node name="BottomMenuBox" type="Panel" parent="BottomLayoutBox"]
-custom_minimum_size = Vector2(1000, 60)
-layout_mode = 2
-size_flags_vertical = 2
-
-[node name="ResizeParentToFitChildrenBehaviour" parent="BottomLayoutBox/BottomMenuBox" instance=ExtResource("8_201br")]
-_setSize = false
-
-[node name="MarginContainer" type="MarginContainer" parent="BottomLayoutBox/BottomMenuBox"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="BottomMenuContainer" type="HBoxContainer" parent="BottomLayoutBox/BottomMenuBox/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="AvailableCashBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
-custom_minimum_size = Vector2(140, 40)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
-
-[node name="Label" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/AvailableCashBox"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -57.0
-offset_top = -11.5
-offset_right = 57.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "$1,000,000,000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CalenderBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
-custom_minimum_size = Vector2(140, 40)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
-
-[node name="Label" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalenderBox"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -57.0
-offset_top = -11.5
-offset_right = 57.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "2025-07-20"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ViewGameHistoryBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
-
-[node name="ViewGameHistoryButton" type="Button" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/ViewGameHistoryBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "View Game History"
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="ViewStudioStatsBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
-
-[node name="ViewStudioStatsButton" type="Button" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/ViewStudioStatsBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "View Studio Stats"
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="OpenMainMenuBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
-
-[node name="Button" type="Button" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/OpenMainMenuBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-icon = ExtResource("8_j6s53")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
 [node name="TopLayoutBox" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -288,7 +160,7 @@ anchor_bottom = 0.1
 offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
-offset_bottom = -10.0
+offset_bottom = 32.0
 grow_horizontal = 2
 alignment = 1
 
@@ -302,9 +174,11 @@ _setSize = false
 
 [node name="MarginContainer" type="MarginContainer" parent="TopLayoutBox/NoActiveDevelopmentMenuBox"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="NoActiveDevelopmentMenuContainer" type="HBoxContainer" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer"]
 layout_mode = 2
@@ -457,15 +331,248 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
+[node name="BottomLayoutBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.9
+anchor_right = 0.75
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 10.0
+offset_right = 20.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="BottomMenuBox" type="Panel" parent="BottomLayoutBox"]
+custom_minimum_size = Vector2(1000, 60)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="BottomLayoutBox/BottomMenuBox" instance=ExtResource("8_201br")]
+_setSize = false
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomLayoutBox/BottomMenuBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BottomMenuContainer" type="HBoxContainer" parent="BottomLayoutBox/BottomMenuBox/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AvailableCashBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
+
+[node name="Label" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/AvailableCashBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -11.5
+offset_right = 57.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "$1,000,000,000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CalenderBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
+
+[node name="Label" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalenderBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -11.5
+offset_right = 57.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "2025-07-20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ViewGameHistoryBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
+
+[node name="ViewGameHistoryButton" type="Button" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/ViewGameHistoryBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "View Game History"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ViewStudioStatsBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
+
+[node name="ViewStudioStatsButton" type="Button" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/ViewStudioStatsBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "View Studio Stats"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="OpenMainMenuBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
+
+[node name="Button" type="Button" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/OpenMainMenuBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("8_j6s53")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
 [node name="CenterContentLayoutBox" type="Control" parent="."]
 layout_mode = 1
 anchor_left = 0.3
 anchor_top = 0.2
 anchor_right = 0.7
 anchor_bottom = 0.8
-offset_left = 385.92
-offset_top = 358.56
-offset_right = -382.08
-offset_bottom = -289.44
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="NewGameBox" type="Panel" parent="CenterContentLayoutBox"]
+custom_minimum_size = Vector2(300, 420)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContentLayoutBox/NewGameBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewGameContainer" type="VBoxContainer" parent="CenterContentLayoutBox/NewGameBox/MarginContainer"]
+layout_mode = 2
+
+[node name="GameTitleBox" type="Panel" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer/GameTitleBox" instance=ExtResource("8_201br")]
+
+[node name="Label" type="Label" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer/GameTitleBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dummy Game Title"
+
+[node name="ChooseGenreBox" type="Panel" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer/ChooseGenreBox" instance=ExtResource("8_201br")]
+
+[node name="Label" type="Label" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer/ChooseGenreBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dummy Genre"
+
+[node name="ChooseTopicBox" type="Panel" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer/ChooseTopicBox" instance=ExtResource("8_201br")]
+
+[node name="Label" type="Label" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer/ChooseTopicBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dummy Topic"
+
+[node name="ChoosePlatformBox" type="Panel" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtvo")
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer/ChoosePlatformBox" instance=ExtResource("8_201br")]
+
+[node name="Label" type="Label" parent="CenterContentLayoutBox/NewGameBox/MarginContainer/NewGameContainer/ChoosePlatformBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PC"
