@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://crgt8odc06uei"]
 
-[ext_resource type="PackedScene" uid="uid://bdakja14n1wqw" path="res://game_scene/resize_parent_to_fit_children.tscn" id="3_o81xq"]
+[ext_resource type="PackedScene" uid="uid://bdakja14n1wqw" path="res://game_scene/resize_to_fit_children.tscn" id="3_o81xq"]
 [ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://assets/game_logo/icon.png" id="4_xb203"]
 [ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
 [ext_resource type="Script" uid="uid://b0lx6s55mura4" path="res://game_scene/hud_elements/BubblesBox.cs" id="5_j8flk"]
@@ -23,17 +23,17 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="BubblesBox" type="Control" parent="LeftSideLayoutBox"]
-custom_minimum_size = Vector2(220, 60)
+[node name="BubblesBox" parent="LeftSideLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
 size_flags_vertical = 2
+_setMinimumSize = true
+_useChildSize = true
+
+[node name="BubblesBoxController" type="Node" parent="LeftSideLayoutBox/BubblesBox"]
 script = ExtResource("5_j8flk")
 _bubbleBarItemPrefab = ExtResource("5_ducuf")
 
-[node name="ResizeParentToFitChildrenBehaviour" parent="LeftSideLayoutBox/BubblesBox" instance=ExtResource("3_o81xq")]
-_setSize = false
-
-[node name="ColorRect" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
+[node name="PanelBackground" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,13 +55,19 @@ layout_mode = 2
 layout_mode = 2
 tooltip_text = "This is a dummy category, but a useful description belongs here"
 
-[node name="FeatureBox" type="Panel" parent="LeftSideLayoutBox"]
-custom_minimum_size = Vector2(300, 100)
+[node name="FeatureBox" parent="LeftSideLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-size_flags_vertical = 2
+_setMinimumSize = true
+_useChildSize = true
 
-[node name="ResizeParentToFitChildrenBehaviour" parent="LeftSideLayoutBox/FeatureBox" instance=ExtResource("3_o81xq")]
-_setSize = false
+[node name="PanelBakground" type="Panel" parent="LeftSideLayoutBox/FeatureBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="LeftSideLayoutBox/FeatureBox"]
 layout_mode = 1
@@ -73,7 +79,7 @@ anchor_bottom = 1.0
 layout_mode = 2
 
 [node name="DummyFeature" type="Panel" parent="LeftSideLayoutBox/FeatureBox/MarginContainer/FeatureContainer"]
-custom_minimum_size = Vector2(200, 80)
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="LeftSideLayoutBox/FeatureBox/MarginContainer/FeatureContainer/DummyFeature"]
@@ -103,13 +109,19 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 0
 
-[node name="ActiveSalesBox" type="Panel" parent="RightSideLayoutBox"]
-custom_minimum_size = Vector2(300, 420)
+[node name="ActiveSalesBox" parent="RightSideLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-size_flags_vertical = 2
+_setMinimumSize = true
+_useChildSize = true
 
-[node name="ResizeParentToFitChildrenBehaviour" parent="RightSideLayoutBox/ActiveSalesBox" instance=ExtResource("3_o81xq")]
-_setSize = false
+[node name="BackgroundPanel" type="Panel" parent="RightSideLayoutBox/ActiveSalesBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="RightSideLayoutBox/ActiveSalesBox"]
 layout_mode = 1
@@ -154,13 +166,18 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="BottomMenuBox" type="Panel" parent="BottomLayoutBox"]
-custom_minimum_size = Vector2(1000, 60)
+[node name="BottomMenuBox" parent="BottomLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-size_flags_vertical = 2
+_setMinimumSize = true
+_useChildSize = true
 
-[node name="ResizeParentToFitChildrenBehaviour" parent="BottomLayoutBox/BottomMenuBox" instance=ExtResource("3_o81xq")]
-_setSize = false
+[node name="BackgroundPanel" type="Panel" parent="BottomLayoutBox/BottomMenuBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="BottomLayoutBox/BottomMenuBox"]
 layout_mode = 1
@@ -270,17 +287,21 @@ anchor_right = 0.75
 offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
-offset_bottom = -10.0
+offset_bottom = 90.0
 grow_horizontal = 2
-alignment = 1
 
-[node name="NoActiveDevelopmentMenuBox" type="Panel" parent="TopLayoutBox"]
-custom_minimum_size = Vector2(360, 60)
+[node name="NoActiveDevelopmentMenuBox" parent="TopLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-size_flags_vertical = 2
+_setMinimumSize = true
+_useChildSize = true
 
-[node name="ResizeParentToFitChildrenBehaviour" parent="TopLayoutBox/NoActiveDevelopmentMenuBox" instance=ExtResource("3_o81xq")]
-_setSize = false
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/NoActiveDevelopmentMenuBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TopLayoutBox/NoActiveDevelopmentMenuBox"]
 layout_mode = 1
@@ -356,13 +377,18 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="ActiveDevelopmentMenuBox" type="Panel" parent="TopLayoutBox"]
-custom_minimum_size = Vector2(360, 60)
+[node name="ActiveDevelopmentMenuBox" parent="TopLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-size_flags_vertical = 2
+_setMinimumSize = true
+_useChildSize = true
 
-[node name="ResizeParentToFitChildrenBehaviour" parent="TopLayoutBox/ActiveDevelopmentMenuBox" instance=ExtResource("3_o81xq")]
-_setSize = false
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/ActiveDevelopmentMenuBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TopLayoutBox/ActiveDevelopmentMenuBox"]
 layout_mode = 1
