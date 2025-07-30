@@ -38,7 +38,7 @@ enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 
 [gui]
 
-theme/custom="res://resources/themes/lore.tres"
+theme/custom="res://resources/themes/pro_dev.tres"
 common/drop_mouse_on_gui_input_disabled=true
 
 [input]
