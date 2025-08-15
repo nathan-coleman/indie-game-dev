@@ -1,0 +1,446 @@
+[gd_scene load_steps=5 format=3 uid="uid://crgt8odc06uei"]
+
+[ext_resource type="PackedScene" uid="uid://bdakja14n1wqw" path="res://game_scene/resize_parent_to_fit_children.tscn" id="3_o81xq"]
+[ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://assets/game_logo/icon.png" id="4_xb203"]
+[ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
+[ext_resource type="Script" uid="uid://b0lx6s55mura4" path="res://game_scene/hud_elements/BubblesBox.cs" id="5_j8flk"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftSideLayoutBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="BubblesBox" type="Control" parent="LeftSideLayoutBox"]
+custom_minimum_size = Vector2(220, 60)
+layout_mode = 2
+size_flags_vertical = 2
+script = ExtResource("5_j8flk")
+_bubbleBarItemPrefab = ExtResource("5_ducuf")
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="LeftSideLayoutBox/BubblesBox" instance=ExtResource("3_o81xq")]
+_setSize = false
+
+[node name="ColorRect" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LeftSideLayoutBox/BubblesBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BubbleBarContainer" type="VBoxContainer" parent="LeftSideLayoutBox/BubblesBox/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DummyBubbleBarItem" parent="LeftSideLayoutBox/BubblesBox/MarginContainer/BubbleBarContainer" instance=ExtResource("5_ducuf")]
+layout_mode = 2
+tooltip_text = "This is a dummy category, but a useful description belongs here"
+
+[node name="FeatureBox" type="Panel" parent="LeftSideLayoutBox"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="LeftSideLayoutBox/FeatureBox" instance=ExtResource("3_o81xq")]
+_setSize = false
+
+[node name="MarginContainer" type="MarginContainer" parent="LeftSideLayoutBox/FeatureBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="FeatureContainer" type="VBoxContainer" parent="LeftSideLayoutBox/FeatureBox/MarginContainer"]
+layout_mode = 2
+
+[node name="DummyFeature" type="Panel" parent="LeftSideLayoutBox/FeatureBox/MarginContainer/FeatureContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LeftSideLayoutBox/FeatureBox/MarginContainer/FeatureContainer/DummyFeature"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dummy Feature"
+
+[node name="RightSideLayoutBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+
+[node name="ActiveSalesBox" type="Panel" parent="RightSideLayoutBox"]
+custom_minimum_size = Vector2(300, 420)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="RightSideLayoutBox/ActiveSalesBox" instance=ExtResource("3_o81xq")]
+_setSize = false
+
+[node name="MarginContainer" type="MarginContainer" parent="RightSideLayoutBox/ActiveSalesBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ActiveSalesContainer" type="VBoxContainer" parent="RightSideLayoutBox/ActiveSalesBox/MarginContainer"]
+layout_mode = 2
+
+[node name="DummySale" type="Panel" parent="RightSideLayoutBox/ActiveSalesBox/MarginContainer/ActiveSalesContainer"]
+custom_minimum_size = Vector2(200, 400)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RightSideLayoutBox/ActiveSalesBox/MarginContainer/ActiveSalesContainer/DummySale"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dummy Game Sale"
+
+[node name="BottomLayoutBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 1.0
+anchor_right = 0.75
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="BottomMenuBox" type="Panel" parent="BottomLayoutBox"]
+custom_minimum_size = Vector2(1000, 60)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="BottomLayoutBox/BottomMenuBox" instance=ExtResource("3_o81xq")]
+_setSize = false
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomLayoutBox/BottomMenuBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BottomMenuContainer" type="HBoxContainer" parent="BottomLayoutBox/BottomMenuBox/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AvailableCashBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/AvailableCashBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -11.5
+offset_right = 57.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "$1,000,000,000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CalenderBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalenderBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -11.5
+offset_right = 57.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "2025-07-20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ViewGameHistoryBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="ViewGameHistoryButton" type="Button" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/ViewGameHistoryBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "View Game History"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ViewStudioStatsBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="ViewStudioStatsButton" type="Button" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/ViewStudioStatsBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "View Studio Stats"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="OpenMainMenuBox" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/OpenMainMenuBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("4_xb203")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="TopLayoutBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.75
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="NoActiveDevelopmentMenuBox" type="Panel" parent="TopLayoutBox"]
+custom_minimum_size = Vector2(360, 60)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="TopLayoutBox/NoActiveDevelopmentMenuBox" instance=ExtResource("3_o81xq")]
+_setSize = false
+
+[node name="MarginContainer" type="MarginContainer" parent="TopLayoutBox/NoActiveDevelopmentMenuBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NoActiveDevelopmentMenuContainer" type="HBoxContainer" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="StartGameBox" type="Panel" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer/NoActiveDevelopmentMenuContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer/NoActiveDevelopmentMenuContainer/StartGameBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Game"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="WorkOnEngineBox" type="Panel" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer/NoActiveDevelopmentMenuContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer/NoActiveDevelopmentMenuContainer/WorkOnEngineBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Work on Engine"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="StartResearchBox" type="Panel" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer/NoActiveDevelopmentMenuContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer/NoActiveDevelopmentMenuContainer/StartResearchBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Research"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ViewPublisherDealsBox" type="Panel" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer/NoActiveDevelopmentMenuContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer/NoActiveDevelopmentMenuContainer/ViewPublisherDealsBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "View Publisher Deals"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ActiveDevelopmentMenuBox" type="Panel" parent="TopLayoutBox"]
+custom_minimum_size = Vector2(360, 60)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="ResizeParentToFitChildrenBehaviour" parent="TopLayoutBox/ActiveDevelopmentMenuBox" instance=ExtResource("3_o81xq")]
+_setSize = false
+
+[node name="MarginContainer" type="MarginContainer" parent="TopLayoutBox/ActiveDevelopmentMenuBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ActiveDevelopmentMenuContainer" type="HBoxContainer" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ProjectNameBox" type="Panel" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/ProjectNameBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -11.5
+offset_right = 57.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Currently Working on: Game #1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrentCostBox" type="Panel" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/CurrentCostBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -11.5
+offset_right = 57.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cost: $1,000,000,000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AddFeatuersBox" type="Panel" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+
+[node name="AddFeaturesButton" type="Button" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/AddFeatuersBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Add Features"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="CenterContentLayoutBox" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+offset_left = 385.92
+offset_top = 358.56
+offset_right = -382.08
+offset_bottom = -289.44
+grow_horizontal = 2
+grow_vertical = 2

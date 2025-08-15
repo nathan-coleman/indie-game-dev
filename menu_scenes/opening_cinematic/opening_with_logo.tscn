@@ -6,5 +6,5 @@
 
 [node name="Opening" instance=ExtResource("1_i1ftt")]
 script = ExtResource("2_nk1kj")
-next_scene = "res://menu_scenes/main_menu/main_menu_with_animations.tscn"
+next_scene = "uid://cr8ql32s6hklp"
 images = Array[Texture2D]([ExtResource("3_w60c0")])
