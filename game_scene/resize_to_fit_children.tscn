@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdakja14n1wqw"]
-
-[ext_resource type="Script" uid="uid://bqndy2iluye68" path="res://game_scene/ResizeToFitChildrenControl.cs" id="1_ffwc0"]
-
-[node name="ResizeToFitChildrenControl" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("1_ffwc0")

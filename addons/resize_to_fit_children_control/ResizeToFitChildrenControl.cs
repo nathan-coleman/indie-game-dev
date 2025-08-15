@@ -1,6 +1,6 @@
 using Godot;
 
-namespace IndieGameDev.Game.UI;
+namespace TheGrandJaggard.Addons.ResizeToFitChildrenControl;
 
 public enum SizeMode
 {
@@ -37,6 +37,8 @@ public partial class ResizeToFitChildrenControl : Control
 
         ChildEnteredTree += OnChildEnteredTree;
         ChildExitingTree += OnChildExitingTree;
+
+        RecalculateSize();
     }
 
     private void OnChildEnteredTree(Node child)
@@ -90,7 +92,7 @@ public partial class ResizeToFitChildrenControl : Control
         }
         else if (_setXMode == SizeMode.ActualSize && Size.X != newControlSize.X)
         {
-            GD.Print($"Setting X componont of size of {Name} to {newControlSize.X}");
+            GD.Print($"Setting X component of size of {Name} to {newControlSize.X}");
             Size = new Vector2(newControlSize.X, Size.Y);
         }
 
@@ -101,7 +103,7 @@ public partial class ResizeToFitChildrenControl : Control
         }
         else if (_setYMode == SizeMode.ActualSize && Size.Y != newControlSize.Y)
         {
-            GD.Print($"Setting Y componont of size of {Name} to {newControlSize.Y}");
+            GD.Print($"Setting Y component of size of {Name} to {newControlSize.Y}");
             Size = new Vector2(Size.X, newControlSize.Y);
         }
     }

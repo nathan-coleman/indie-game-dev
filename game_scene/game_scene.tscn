@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://crgt8odc06uei"]
 
-[ext_resource type="PackedScene" uid="uid://bdakja14n1wqw" path="res://game_scene/resize_to_fit_children.tscn" id="3_o81xq"]
 [ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://assets/game_logo/icon.png" id="4_xb203"]
+[ext_resource type="Script" uid="uid://bqndy2iluye68" path="res://addons/resize_to_fit_children_control/ResizeToFitChildrenControl.cs" id="5_ap5n0"]
 [ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
 [ext_resource type="Script" uid="uid://b0lx6s55mura4" path="res://game_scene/hud_elements/BubblesBox.cs" id="5_j8flk"]
 
@@ -23,9 +23,10 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="BubblesBox" parent="LeftSideLayoutBox" instance=ExtResource("3_o81xq")]
+[node name="BubblesBox" type="Control" parent="LeftSideLayoutBox"]
 layout_mode = 2
 size_flags_vertical = 2
+script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
 
@@ -33,7 +34,7 @@ _useChildYMode = 2
 script = ExtResource("5_j8flk")
 _bubbleBarItemPrefab = ExtResource("5_ducuf")
 
-[node name="PanelBackground" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
+[node name="BackgroundPanel" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,12 +56,13 @@ layout_mode = 2
 layout_mode = 2
 tooltip_text = "This is a dummy category, but a useful description belongs here"
 
-[node name="FeatureBox" parent="LeftSideLayoutBox" instance=ExtResource("3_o81xq")]
+[node name="FeatureBox" type="Control" parent="LeftSideLayoutBox"]
 layout_mode = 2
+script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
 
-[node name="PanelBakground" type="Panel" parent="LeftSideLayoutBox/FeatureBox"]
+[node name="BackgroundPanel" type="Panel" parent="LeftSideLayoutBox/FeatureBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,8 +111,9 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 0
 
-[node name="ActiveSalesBox" parent="RightSideLayoutBox" instance=ExtResource("3_o81xq")]
+[node name="ActiveSalesBox" type="Control" parent="RightSideLayoutBox"]
 layout_mode = 2
+script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
 
@@ -166,8 +169,9 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="BottomMenuBox" parent="BottomLayoutBox" instance=ExtResource("3_o81xq")]
+[node name="BottomMenuBox" type="Control" parent="BottomLayoutBox"]
 layout_mode = 2
+script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
 
@@ -287,11 +291,12 @@ anchor_right = 0.75
 offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
-offset_bottom = 90.0
+offset_bottom = -10.0
 grow_horizontal = 2
 
-[node name="NoActiveDevelopmentMenuBox" parent="TopLayoutBox" instance=ExtResource("3_o81xq")]
+[node name="NoActiveDevelopmentMenuBox" type="Control" parent="TopLayoutBox"]
 layout_mode = 2
+script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
 
@@ -377,8 +382,9 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="ActiveDevelopmentMenuBox" parent="TopLayoutBox" instance=ExtResource("3_o81xq")]
+[node name="ActiveDevelopmentMenuBox" type="Control" parent="TopLayoutBox"]
 layout_mode = 2
+script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
 
