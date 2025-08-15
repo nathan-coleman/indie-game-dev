@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cr8ql32s6hklp"]
 
-[ext_resource type="Script" uid="uid://bhgs1upaahk3y" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/main_menu.gd" id="1_4jqed"]
-[ext_resource type="PackedScene" uid="uid://hmx6o472ropw" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_1f2kr"]
+[ext_resource type="Script" uid="uid://bk5suxmengugo" path="res://menu_scenes/main_menu/MyMainMenu.cs" id="1_4nulf"]
+[ext_resource type="PackedScene" uid="uid://boicxc6x4554n" path="res://menu_scenes/options/master_options_menu_with_tabs.tscn" id="2_4nulf"]
 [ext_resource type="PackedScene" uid="uid://6p2ymb2rownn" path="res://menu_scenes/credits/scrolling_credits.tscn" id="3_uvpg5"]
 [ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_game_template/base/scripts/ui_sound_controller.gd" id="4_jctvr"]
 [ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="5_hyt6y"]
@@ -16,10 +16,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4jqed")
-game_scene_path = "uid://crgt8odc06uei"
-options_packed_scene = ExtResource("2_1f2kr")
-credits_packed_scene = ExtResource("3_uvpg5")
+script = ExtResource("1_4nulf")
+_gameScenePath = "uid://crgt8odc06uei"
+_optionsPackedScene = ExtResource("2_4nulf")
+_creditsPackedScene = ExtResource("3_uvpg5")
 
 [node name="UISoundController" type="Node" parent="."]
 script = ExtResource("4_jctvr")
@@ -213,8 +213,7 @@ offset_right = 45.0
 grow_vertical = 0
 text = "Back"
 
-[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/NewGameButton" to="." method="OnNewGameButtonPressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/OptionsButton" to="." method="OnOptionsButtonPressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/CreditsButton" to="." method="OnCreditsButtonPressed"]
 [connection signal="pressed" from="FlowControlContainer/FlowControl/BackButton" to="." method="_on_back_button_pressed"]

@@ -4,18 +4,15 @@ namespace IndieGameDev.Menus;
 
 public partial class MyMainMenu : Control
 {
-	[Export(PropertyHint.File, "*.tscn")]
-	public string GameScenePath;
+	[Export(PropertyHint.File, "*.tscn")] private string _gameScenePath;
 
-	[Export]
-	public PackedScene OptionsPackedScene;
+	[Export] private PackedScene _optionsPackedScene;
 
-	[Export]
-	public PackedScene CreditsPackedScene;
+	[Export] private PackedScene _creditsPackedScene;
 
-	private Control optionsScene;
-	private Control creditsScene;
-	private Control subMenu;
+	private Control _optionsScene;
+	private Control _creditsScene;
+	private Control _subMenu;
 
 	public override void _Ready()
 	{
@@ -27,12 +24,9 @@ public partial class MyMainMenu : Control
 
 	public override void _Input(InputEvent inputEvent)
 	{
-		if (inputEvent.IsActionReleased("ui_cancel"))
+		if (inputEvent.IsActionReleased("ui_cancel") && _subMenu != null)
 		{
-			if (subMenu != null)
-				CloseSubMenu();
-			else
-				GetTree().Quit();
+			CloseSubMenu();
 		}
 
 		if (inputEvent.IsActionReleased("ui_accept") && GetViewport().GuiGetFocusOwner() == null)
@@ -42,74 +36,50 @@ public partial class MyMainMenu : Control
 		}
 	}
 
-	public void OnNewGameButtonPressed()
-	{
-		NewGame();
-	}
+	public void OnNewGameButtonPressed() => LoadGameScene();
 
-	public void OnOptionsButtonPressed()
-	{
-		OpenSubMenu(optionsScene);
-	}
+    public void OnOptionsButtonPressed() => OpenSubMenu(_optionsScene);
 
-	public void OnCreditsButtonPressed()
-	{
-		OpenSubMenu(creditsScene);
-	}
+    public void OnCreditsButtonPressed() => OpenSubMenu(_creditsScene);
 
-	public void OnExitButtonPressed()
-	{
-		GetTree().Quit();
-	}
+    public void OnExitButtonPressed() => GetTree().Quit();
 
-	public void OnCreditsEndReached()
-	{
-		if (subMenu == creditsScene)
-		{
-			CloseSubMenu();
-		}
-	}
+    public void OnBackButtonPressed() => CloseSubMenu();
 
-	public void OnBackButtonPressed()
-	{
-		CloseSubMenu();
-	}
+    public void OnCreditsEndReached() => CloseCreditsScene();
 
-	private void LoadGameScene()
+    private void LoadGameScene()
 	{
 		var sceneLoader = GetNode("/root/SceneLoader");
-		sceneLoader.Call("LoadScene", GameScenePath);
-	}
-
-	private void NewGame()
-	{
-		LoadGameScene();
+		sceneLoader.Call("load_scene", _gameScenePath);
 	}
 
 	private void OpenSubMenu(Control menu)
 	{
-		subMenu = menu;
-		subMenu.Show();
+		_subMenu = menu;
+		_subMenu.Show();
 		GetNode<Button>("%BackButton").Show();
 		GetNode<Control>("%MenuContainer").Hide();
 	}
 
 	private void CloseSubMenu()
 	{
-		if (subMenu == null)
+		if (_subMenu == null)
 			return;
 
-		subMenu.Hide();
-		subMenu = null;
+		_subMenu.Hide();
+		_subMenu = null;
 		GetNode<Button>("%BackButton").Hide();
 		GetNode<Control>("%MenuContainer").Show();
 	}
 
-	private static bool EventIsMouseButtonReleased(InputEvent inputEvent)
-	{
-		return inputEvent is InputEventMouseButton mouseEvent
-			&& !mouseEvent.Pressed;
-	}
+    private void CloseCreditsScene()
+    {
+        if (_subMenu == _creditsScene)
+        {
+            CloseSubMenu();
+        }
+    }
 
 	private void HideExitForWeb()
 	{
@@ -121,7 +91,7 @@ public partial class MyMainMenu : Control
 
 	private void HideNewGameIfUnset()
 	{
-		if (string.IsNullOrEmpty(GameScenePath))
+		if (string.IsNullOrEmpty(_gameScenePath))
 		{
 			GetNode<Button>("%NewGameButton").Hide();
 		}
@@ -129,33 +99,33 @@ public partial class MyMainMenu : Control
 
 	private void AddOrHideOptions()
 	{
-		if (OptionsPackedScene == null)
+		if (_optionsPackedScene == null)
 		{
 			GetNode<Button>("%OptionsButton").Hide();
 		}
 		else
 		{
-			optionsScene = OptionsPackedScene.Instantiate<Control>();
-			optionsScene.Hide();
-			GetNode<Control>("%OptionsContainer").CallDeferred("add_child", optionsScene);
+			_optionsScene = _optionsPackedScene.Instantiate<Control>();
+			_optionsScene.Hide();
+			GetNode<Control>("%OptionsContainer").CallDeferred("add_child", _optionsScene);
 		}
 	}
 
 	private void AddOrHideCredits()
 	{
-		if (CreditsPackedScene == null)
+		if (_creditsPackedScene == null)
 		{
 			GetNode<Button>("%CreditsButton").Hide();
 		}
 		else
 		{
-			creditsScene = CreditsPackedScene.Instantiate<Control>();
-			creditsScene.Hide();
-			if (creditsScene.HasSignal("end_reached"))
+			_creditsScene = _creditsPackedScene.Instantiate<Control>();
+			_creditsScene.Hide();
+			if (_creditsScene.HasSignal("end_reached"))
 			{
-				creditsScene.Connect("end_reached", new Callable(this, nameof(OnCreditsEndReached)));
+				_creditsScene.Connect("end_reached", new Callable(this, nameof(OnCreditsEndReached)));
 			}
-			GetNode<Control>("%CreditsContainer").CallDeferred("add_child", creditsScene);
+			GetNode<Control>("%CreditsContainer").CallDeferred("add_child", _creditsScene);
 		}
 	}
 }
