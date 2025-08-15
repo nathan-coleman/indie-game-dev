@@ -20,19 +20,17 @@ public partial class BubblesBox : Control
 
     public override void _Ready()
     {
-        base._Ready();
+        var bubbleBarContainer = GetNode<Control>("%BubbleBarContainer");
 
-        var bubbleBarContainer = GetNode("%BubbleBarContainer");
-
-        foreach (Node childNode in bubbleBarContainer.GetChildren())
+        foreach (var childNode in bubbleBarContainer.GetChildren())
         {
-            if (childNode is not Control) continue;
+            if (childNode is not BubbleBarItem) continue;
             childNode.QueueFree();
         }
 
         foreach (var bubbleValue in demoBubbleValues)
         {
-            var newBubbleBarItem = _bubbleBarItemPrefab.Instantiate() as BubbleBarItem;
+            var newBubbleBarItem = _bubbleBarItemPrefab.Instantiate<BubbleBarItem>();
 
             newBubbleBarItem.BubbleName = bubbleValue.name;
             newBubbleBarItem.BubbleAmount = bubbleValue.amount;
