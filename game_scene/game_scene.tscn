@@ -26,8 +26,8 @@ offset_bottom = -10.0
 [node name="BubblesBox" parent="LeftSideLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
 size_flags_vertical = 2
-_setMinimumSize = true
-_useChildSize = true
+_setYMode = 1
+_useChildYMode = 2
 
 [node name="BubblesBoxController" type="Node" parent="LeftSideLayoutBox/BubblesBox"]
 script = ExtResource("5_j8flk")
@@ -57,8 +57,8 @@ tooltip_text = "This is a dummy category, but a useful description belongs here"
 
 [node name="FeatureBox" parent="LeftSideLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-_setMinimumSize = true
-_useChildSize = true
+_setYMode = 1
+_useChildYMode = 2
 
 [node name="PanelBakground" type="Panel" parent="LeftSideLayoutBox/FeatureBox"]
 layout_mode = 1
@@ -111,8 +111,8 @@ grow_horizontal = 0
 
 [node name="ActiveSalesBox" parent="RightSideLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-_setMinimumSize = true
-_useChildSize = true
+_setYMode = 1
+_useChildYMode = 2
 
 [node name="BackgroundPanel" type="Panel" parent="RightSideLayoutBox/ActiveSalesBox"]
 layout_mode = 1
@@ -168,8 +168,8 @@ alignment = 1
 
 [node name="BottomMenuBox" parent="BottomLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-_setMinimumSize = true
-_useChildSize = true
+_setYMode = 1
+_useChildYMode = 2
 
 [node name="BackgroundPanel" type="Panel" parent="BottomLayoutBox/BottomMenuBox"]
 layout_mode = 1
@@ -292,8 +292,8 @@ grow_horizontal = 2
 
 [node name="NoActiveDevelopmentMenuBox" parent="TopLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-_setMinimumSize = true
-_useChildSize = true
+_setYMode = 1
+_useChildYMode = 2
 
 [node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/NoActiveDevelopmentMenuBox"]
 layout_mode = 1
@@ -379,8 +379,8 @@ expand_icon = true
 
 [node name="ActiveDevelopmentMenuBox" parent="TopLayoutBox" instance=ExtResource("3_o81xq")]
 layout_mode = 2
-_setMinimumSize = true
-_useChildSize = true
+_setYMode = 1
+_useChildYMode = 2
 
 [node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/ActiveDevelopmentMenuBox"]
 layout_mode = 1

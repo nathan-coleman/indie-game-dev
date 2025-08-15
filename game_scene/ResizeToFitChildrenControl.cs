@@ -2,6 +2,13 @@ using Godot;
 
 namespace IndieGameDev.Game.UI;
 
+public enum SizeMode
+{
+    Off,
+    MinimumSize,
+    ActualSize
+}
+
 /// <summary>
 /// This <href="Control"> will resize itself to fit it's children.
 /// It can be configured to use the minimum size of it's children
@@ -12,22 +19,13 @@ namespace IndieGameDev.Game.UI;
 /// </summary>
 public partial class ResizeToFitChildrenControl : Control
 {
-    [Export] private bool _setMinimumSize;
-    [Export] private bool _setSize;
-    [Export] private bool _useChildMinimumSize;
-    [Export] private bool _useChildSize;
+    [Export] private SizeMode _setXMode;
+    [Export] private SizeMode _setYMode;
+    [Export] private SizeMode _useChildXMode;
+    [Export] private SizeMode _useChildYMode;
 
     public override void _Ready()
     {
-        if ((_useChildMinimumSize && _useChildSize)
-            || (!_useChildMinimumSize && !_useChildSize))
-        {
-            GD.Print($"{Name} Is not configured correctly and so will not resize itself.\n"
-                + $"Exactly one {nameof(_useChildMinimumSize)} or {nameof(_useChildSize)} must be true.");
-
-            return;
-        }
-
         foreach (Node child in GetChildren())
         {
             OnChildEnteredTree(child);
@@ -59,32 +57,48 @@ public partial class ResizeToFitChildrenControl : Control
         {
             if (child is not Control controlChild) continue;
 
-            Vector2 childDimensions = _useChildSize
-                ? controlChild.Position + controlChild.Size
-                : controlChild.Position + controlChild.CustomMinimumSize;
+            float childDimensionsX = _useChildXMode switch
+            {
+                SizeMode.MinimumSize => controlChild.Position.X + controlChild.CustomMinimumSize.X,
+                SizeMode.ActualSize => controlChild.Position.X + controlChild.Size.X,
+                _ => 0
+            };
+            float childDimensionsY = _useChildYMode switch
+            {
+                SizeMode.MinimumSize => controlChild.Position.Y + controlChild.CustomMinimumSize.Y,
+                SizeMode.ActualSize => controlChild.Position.Y + controlChild.Size.Y,
+                _ => 0
+            };
 
-            if (childDimensions.X > newControlSize.X) newControlSize.X = childDimensions.X;
-            if (childDimensions.Y > newControlSize.Y) newControlSize.Y = childDimensions.Y;
+            if (childDimensionsX > newControlSize.X) newControlSize.X = childDimensionsX;
+            if (childDimensionsY > newControlSize.Y) newControlSize.Y = childDimensionsY;
         }
-
-        // Is there a way to cancel deffered calls?
-        // CancelDeferred(nameof(ResizeTo));
 
         CallDeferred(nameof(ResizeTo), newControlSize);
     }
 
     private void ResizeTo(Vector2 newControlSize)
     {
-        if (_setMinimumSize && CustomMinimumSize != newControlSize)
+        if (_setXMode == SizeMode.MinimumSize && CustomMinimumSize.X != newControlSize.X)
         {
-            GD.Print($"Setting custom minimum size of {Name} to {newControlSize}");
-            CustomMinimumSize = newControlSize;
+            GD.Print($"Setting X component of custom minimum size of {Name} to {newControlSize.X}");
+            CustomMinimumSize = new Vector2(newControlSize.X, CustomMinimumSize.Y);
+        }
+        else if (_setXMode == SizeMode.ActualSize && Size.X != newControlSize.X)
+        {
+            GD.Print($"Setting X componont of size of {Name} to {newControlSize.X}");
+            Size = new Vector2(newControlSize.X, Size.Y);
         }
 
-        if (_setSize && Size != newControlSize)
+        if (_setYMode == SizeMode.MinimumSize && CustomMinimumSize.Y != newControlSize.Y)
         {
-            GD.Print($"Setting size of {Name} to {newControlSize}");
-            Size = newControlSize;
+            GD.Print($"Setting Y component of custom minimum size of {Name} to {newControlSize.Y}");
+            CustomMinimumSize = new Vector2(CustomMinimumSize.X, newControlSize.Y);
+        }
+        else if (_setYMode == SizeMode.ActualSize && Size.Y != newControlSize.Y)
+        {
+            GD.Print($"Setting Y componont of size of {Name} to {newControlSize.Y}");
+            Size = new Vector2(Size.X, newControlSize.Y);
         }
     }
 }
