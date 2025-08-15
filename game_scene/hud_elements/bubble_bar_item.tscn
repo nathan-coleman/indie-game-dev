@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://23pse4dcm0r4"]
 
-[ext_resource type="Script" uid="uid://c4gofepdddyyu" path="res://scenes/game_scene/hud_elements/BubbleBarItem.cs" id="1_v0l7e"]
+[ext_resource type="Script" uid="uid://c4gofepdddyyu" path="res://game_scene/hud_elements/BubbleBarItem.cs" id="1_v0l7e"]
 
 [node name="BubbleBarItem" type="Control"]
 custom_minimum_size = Vector2(200, 40)
