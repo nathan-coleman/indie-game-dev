@@ -17,15 +17,19 @@ public enum SizeMode
 /// may be helpful when resizing for dynamic text labels or any other dynamicly
 /// set content.
 /// </summary>
+[Tool]
 public partial class ResizeToFitChildrenControl : Control
 {
     [Export] private SizeMode _setXMode;
     [Export] private SizeMode _setYMode;
     [Export] private SizeMode _useChildXMode;
     [Export] private SizeMode _useChildYMode;
+    [ExportToolButton("Recalculate Size")] private Callable _ { get => new(this, nameof(RecalculateSize)); }
 
     public override void _Ready()
     {
+        if (Engine.IsEditorHint()) return;
+
         foreach (Node child in GetChildren())
         {
             OnChildEnteredTree(child);
