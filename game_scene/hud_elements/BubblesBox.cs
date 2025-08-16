@@ -3,7 +3,7 @@ using Godot;
 
 namespace IndieGameDev.Game.UI;
 
-public partial class BubblesBox : Control
+public partial class BubblesBox : Node
 {
     [Export] private PackedScene _bubbleBarItemPrefab;
 

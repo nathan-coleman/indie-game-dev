@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdakja14n1wqw"]
-
-[ext_resource type="Script" uid="uid://q4nf4upjb0w6" path="res://game_scene/ResizeParentToFitChildren.cs" id="1_ffwc0"]
-
-[node name="ResizeParentToFitChildrenBehaviour" type="Node"]
-script = ExtResource("1_ffwc0")
-_setMinimumSize = true
-_setSize = true
-_useSiblingActualSize = true
