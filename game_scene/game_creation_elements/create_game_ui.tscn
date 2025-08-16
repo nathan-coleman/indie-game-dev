@@ -1,0 +1,427 @@
+[gd_scene load_steps=5 format=3 uid="uid://dixk4sdsfxhw0"]
+
+[ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://assets/game_logo/icon.png" id="2_kdojq"]
+
+[sub_resource type="Gradient" id="Gradient_k340r"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e0oqy"]
+gradient = SubResource("Gradient_k340r")
+fill_from = Vector2(0.25, 0.25)
+fill_to = Vector2(0.75, 0.75)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_05euk"]
+gradient = SubResource("Gradient_k340r")
+fill_from = Vector2(0.75, 0.25)
+fill_to = Vector2(0.25, 0.75)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[node name="CreateGameBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TwoColumnsContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="GameOptionCategoryBox" type="Control" parent="TwoColumnsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BackgroundPanel" type="Panel" parent="TwoColumnsContainer/GameOptionCategoryBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionCategoryBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="Title" type="LineEdit" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/TitleBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter game title here..."
+alignment = 1
+
+[node name="GameCreationMenuItemsContainer" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GenreBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="OpenGenrePaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/GenreBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Genre: None selected"
+icon_alignment = 1
+expand_icon = true
+
+[node name="TopicBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="OpenTopicPaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/TopicBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Topic: None selected"
+icon_alignment = 1
+expand_icon = true
+
+[node name="PlatformBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+
+[node name="OpenPlatformPaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/PlatformBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Platform: None selected"
+icon_alignment = 1
+expand_icon = true
+
+[node name="GraphicsBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+
+[node name="OpenGraphicsPaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/GraphicsBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Graphics: None selected"
+icon_alignment = 1
+expand_icon = true
+
+[node name="TargetAudienceBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+
+[node name="OpenTargetAudiencePaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/TargetAudienceBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Target Audience: None selected"
+icon_alignment = 1
+expand_icon = true
+
+[node name="GameCreationShortcutsContainer" type="HBoxContainer" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer"]
+layout_mode = 2
+
+[node name="ViewGameHistoryBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationShortcutsContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="OpenGameHistoryPanelButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationShortcutsContainer/ViewGameHistoryBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = SubResource("GradientTexture2D_e0oqy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="CopyPasteSettingsBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationShortcutsContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="OpenCopyPasteSettingsPanelButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationShortcutsContainer/CopyPasteSettingsBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = SubResource("GradientTexture2D_05euk")
+icon_alignment = 1
+expand_icon = true
+
+[node name="GameOptionSelectionBox" type="Control" parent="TwoColumnsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GameOptionSelectionTabContainer" type="TabContainer" parent="TwoColumnsContainer/GameOptionSelectionBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+current_tab = 0
+tabs_visible = false
+deselect_enabled = true
+
+[node name="GenreSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="GridContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox"]
+layout_mode = 2
+columns = 2
+
+[node name="DummyGenre" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy genre, but a useful description belongs here!"
+
+[node name="GenreIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="GenreName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre"]
+layout_mode = 2
+text = "Dummy Genre"
+horizontal_alignment = 1
+
+[node name="DummyGenre2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy genre, but a useful description belongs here!"
+
+[node name="GenreIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre2"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="GenreName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre2"]
+layout_mode = 2
+text = "Dummy Genre"
+horizontal_alignment = 1
+
+[node name="DummyGenre3" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy genre, but a useful description belongs here!"
+
+[node name="GenreIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre3"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="GenreName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre3"]
+layout_mode = 2
+text = "Dummy Genre"
+horizontal_alignment = 1
+
+[node name="DummyGenre4" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy genre, but a useful description belongs here!"
+
+[node name="GenreIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre4"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="GenreName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre4"]
+layout_mode = 2
+text = "Dummy Genre"
+horizontal_alignment = 1
+
+[node name="TopicSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="GridContainer" type="GridContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox"]
+layout_mode = 2
+columns = 2
+
+[node name="DummyTopic" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy topic, but a useful description belongs here!"
+
+[node name="TopicIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer/DummyTopic"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="TopicName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer/DummyTopic"]
+layout_mode = 2
+text = "Dummy Topic"
+horizontal_alignment = 1
+
+[node name="DummyTopic2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy topic, but a useful description belongs here!"
+
+[node name="TopicIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer/DummyTopic2"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="TopicName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer/DummyTopic2"]
+layout_mode = 2
+text = "Dummy Topic"
+horizontal_alignment = 1
+
+[node name="PlatformSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="GridContainer" type="GridContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox"]
+layout_mode = 2
+columns = 2
+
+[node name="DummyPlatform" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy platform, but a useful description belongs here!"
+
+[node name="PlatformIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer/DummyPlatform"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="PlatformName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer/DummyPlatform"]
+layout_mode = 2
+text = "Dummy Platform"
+horizontal_alignment = 1
+
+[node name="DummyPlatform2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy platform, but a useful description belongs here!"
+
+[node name="PlatformIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer/DummyPlatform2"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="PlatformName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer/DummyPlatform2"]
+layout_mode = 2
+text = "Dummy Platform"
+horizontal_alignment = 1
+
+[node name="GraphicsSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="GridContainer" type="GridContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox"]
+layout_mode = 2
+columns = 2
+
+[node name="DummyGraphicsType" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy graphics type, but a useful description belongs here!"
+
+[node name="GraphicsTypeIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer/DummyGraphicsType"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="GraphicsTypeName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer/DummyGraphicsType"]
+layout_mode = 2
+text = "Dummy Graphics Type"
+horizontal_alignment = 1
+
+[node name="DummyGraphicsType2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy graphics type, but a useful description belongs here!"
+
+[node name="GraphicsTypeIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer/DummyGraphicsType2"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="GraphicsTypeName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer/DummyGraphicsType2"]
+layout_mode = 2
+text = "Dummy Graphics Type"
+horizontal_alignment = 1
+
+[node name="TargetAudienceSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="GridContainer" type="GridContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox"]
+layout_mode = 2
+columns = 2
+
+[node name="DummyTargetAudience" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy target audience, but a useful description belongs here!"
+
+[node name="TargetAudienceIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer/DummyTargetAudience"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="TargetAudienceName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer/DummyTargetAudience"]
+layout_mode = 2
+text = "Dummy Target Audience"
+horizontal_alignment = 1
+
+[node name="DummyTargetAudience2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "This is a dummy target audience, but a useful description belongs here!"
+
+[node name="TargetAudienceIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer/DummyTargetAudience2"]
+layout_mode = 2
+texture = ExtResource("2_kdojq")
+expand_mode = 5
+
+[node name="TargetAudienceName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer/DummyTargetAudience2"]
+layout_mode = 2
+text = "Dummy Target Audience"
+horizontal_alignment = 1

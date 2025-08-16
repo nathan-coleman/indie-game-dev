@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dvw2fe07fhjwu"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dvw2fe07fhjwu"]
+
+[ext_resource type="StyleBox" uid="uid://dhsi8yk77jg5t" path="res://resources/themes/panel_style_box.tres" id="1_db46w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hxc2"]
 content_margin_left = 8.0
@@ -55,29 +57,6 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq3iw"]
-bg_color = Color(0.00392157, 0.0862745, 0.152941, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvab5"]
-bg_color = Color(0.192157, 0.239216, 0.352941, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.00392157, 0.0862745, 0.152941, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f05by"]
-bg_color = Color(0.192157, 0.239216, 0.352941, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.00392157, 0.0862745, 0.152941, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -140,6 +119,19 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeb5s"]
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+bg_color = Color(0.192157, 0.239216, 0.352941, 1)
+border_width_left = 6
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.00392157, 0.0862745, 0.152941, 1)
+corner_detail = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gh53c"]
 bg_color = Color(0.631373, 0.52549, 0.619608, 1)
 border_width_left = 2
@@ -168,28 +160,25 @@ DelayProgressBar/styles/fill = SubResource("StyleBoxFlat_2ymfe")
 Label/colors/font_color = Color(0.839216, 0.933333, 1, 1)
 Label/colors/font_outline_color = Color(0.00392157, 0.0862745, 0.152941, 1)
 Label/constants/outline_size = 8
-LineEdit/colors/caret_color = Color(0.839216, 0.933333, 1, 1)
-LineEdit/colors/font_color = Color(0.929412, 0.921569, 0.627451, 1)
-LineEdit/colors/font_uneditable_color = Color(0.192157, 0.239216, 0.352941, 1)
-LineEdit/styles/normal = SubResource("StyleBoxFlat_pq3iw")
-LineEdit/styles/read_only = SubResource("StyleBoxFlat_pq3iw")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
-Panel/styles/panel = SubResource("StyleBoxFlat_hvab5")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_hvab5")
-ProgressBar/styles/background = SubResource("StyleBoxFlat_f05by")
+Panel/styles/panel = ExtResource("1_db46w")
+PanelContainer/styles/panel = ExtResource("1_db46w")
+ProgressBar/styles/background = ExtResource("1_db46w")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_t1x62")
 RichTextLabel/colors/default_color = Color(0.839216, 0.933333, 1, 1)
 RichTextLabel/colors/font_outline_color = Color(0.00392157, 0.0862745, 0.152941, 1)
 RichTextLabel/constants/outline_size = 8
-TabContainer/styles/panel = SubResource("StyleBoxFlat_hvab5")
+TabContainer/styles/panel = ExtResource("1_db46w")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_w2bse")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_7eahf")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_5sk2t")
 TimerProgressBar/base_type = &"ProgressBar"
 TimerProgressBar/styles/fill = SubResource("StyleBoxFlat_00w47")
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_oeb5s")
 VBoxContainer/constants/separation = 10
 WarningProgressBar/base_type = &"ProgressBar"
+WarningProgressBar/styles/background = ExtResource("1_db46w")
 WarningProgressBar/styles/fill = SubResource("StyleBoxFlat_gh53c")
