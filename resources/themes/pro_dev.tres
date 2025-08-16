@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dvw2fe07fhjwu"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dvw2fe07fhjwu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hxc2"]
 content_margin_left = 8.0
@@ -59,9 +59,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq3iw"]
-bg_color = Color(0.00392157, 0.0862745, 0.152941, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvab5"]
 bg_color = Color(0.192157, 0.239216, 0.352941, 1)
@@ -168,11 +165,6 @@ DelayProgressBar/styles/fill = SubResource("StyleBoxFlat_2ymfe")
 Label/colors/font_color = Color(0.839216, 0.933333, 1, 1)
 Label/colors/font_outline_color = Color(0.00392157, 0.0862745, 0.152941, 1)
 Label/constants/outline_size = 8
-LineEdit/colors/caret_color = Color(0.839216, 0.933333, 1, 1)
-LineEdit/colors/font_color = Color(0.929412, 0.921569, 0.627451, 1)
-LineEdit/colors/font_uneditable_color = Color(0.192157, 0.239216, 0.352941, 1)
-LineEdit/styles/normal = SubResource("StyleBoxFlat_pq3iw")
-LineEdit/styles/read_only = SubResource("StyleBoxFlat_pq3iw")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
