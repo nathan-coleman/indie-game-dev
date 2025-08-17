@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dixk4sdsfxhw0"]
 
 [ext_resource type="Script" uid="uid://bua46qwdkvxi7" path="res://game_scene/game_creation_elements/CreateGameController.cs" id="1_8hgkq"]
-[ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://assets/game_logo/icon.png" id="2_kdojq"]
+[ext_resource type="PackedScene" uid="uid://b10npsji1x5pl" path="res://game_scene/game_creation_elements/large_grid_item.tscn" id="2_l15sv"]
 
 [sub_resource type="Gradient" id="Gradient_k340r"]
 
@@ -85,6 +85,7 @@ custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 
 [node name="OpenSizePaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/SizeBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,35 +232,17 @@ metadata/_tab_index = 0
 layout_mode = 2
 columns = 2
 
-[node name="DummySize" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer"]
+[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy genre, but a useful description belongs here!"
 
-[node name="SizeIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer/DummySize"]
+[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
 
-[node name="SizeName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer/DummySize"]
+[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-text = "Dummy Size"
-horizontal_alignment = 1
 
-[node name="DummySize2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer"]
+[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy genre, but a useful description belongs here!"
-
-[node name="SizeIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer/DummySize2"]
-layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
-
-[node name="SizeName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer/DummySize2"]
-layout_mode = 2
-text = "Dummy Size"
-horizontal_alignment = 1
 
 [node name="GenreSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
 visible = false
@@ -270,65 +253,17 @@ metadata/_tab_index = 1
 layout_mode = 2
 columns = 2
 
-[node name="DummyGenre" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer"]
+[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy genre, but a useful description belongs here!"
 
-[node name="GenreIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre"]
+[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
 
-[node name="GenreName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre"]
+[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-text = "Dummy Genre"
-horizontal_alignment = 1
 
-[node name="DummyGenre2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer"]
+[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy genre, but a useful description belongs here!"
-
-[node name="GenreIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre2"]
-layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
-
-[node name="GenreName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre2"]
-layout_mode = 2
-text = "Dummy Genre"
-horizontal_alignment = 1
-
-[node name="DummyGenre3" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy genre, but a useful description belongs here!"
-
-[node name="GenreIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre3"]
-layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
-
-[node name="GenreName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre3"]
-layout_mode = 2
-text = "Dummy Genre"
-horizontal_alignment = 1
-
-[node name="DummyGenre4" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy genre, but a useful description belongs here!"
-
-[node name="GenreIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre4"]
-layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
-
-[node name="GenreName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GenreSelectionBox/GridContainer/DummyGenre4"]
-layout_mode = 2
-text = "Dummy Genre"
-horizontal_alignment = 1
 
 [node name="TopicSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
 visible = false
@@ -339,35 +274,17 @@ metadata/_tab_index = 2
 layout_mode = 2
 columns = 2
 
-[node name="DummyTopic" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer"]
+[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy topic, but a useful description belongs here!"
 
-[node name="TopicIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer/DummyTopic"]
+[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
 
-[node name="TopicName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer/DummyTopic"]
+[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-text = "Dummy Topic"
-horizontal_alignment = 1
 
-[node name="DummyTopic2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer"]
+[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy topic, but a useful description belongs here!"
-
-[node name="TopicIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer/DummyTopic2"]
-layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
-
-[node name="TopicName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TopicSelectionBox/GridContainer/DummyTopic2"]
-layout_mode = 2
-text = "Dummy Topic"
-horizontal_alignment = 1
 
 [node name="PlatformSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
 visible = false
@@ -378,35 +295,17 @@ metadata/_tab_index = 3
 layout_mode = 2
 columns = 2
 
-[node name="DummyPlatform" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer"]
+[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy platform, but a useful description belongs here!"
 
-[node name="PlatformIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer/DummyPlatform"]
+[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
 
-[node name="PlatformName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer/DummyPlatform"]
+[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-text = "Dummy Platform"
-horizontal_alignment = 1
 
-[node name="DummyPlatform2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer"]
+[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy platform, but a useful description belongs here!"
-
-[node name="PlatformIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer/DummyPlatform2"]
-layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
-
-[node name="PlatformName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/PlatformSelectionBox/GridContainer/DummyPlatform2"]
-layout_mode = 2
-text = "Dummy Platform"
-horizontal_alignment = 1
 
 [node name="GraphicsSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
 visible = false
@@ -417,35 +316,17 @@ metadata/_tab_index = 4
 layout_mode = 2
 columns = 2
 
-[node name="DummyGraphicsType" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer"]
+[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy graphics type, but a useful description belongs here!"
 
-[node name="GraphicsTypeIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer/DummyGraphicsType"]
+[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
 
-[node name="GraphicsTypeName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer/DummyGraphicsType"]
+[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-text = "Dummy Graphics Type"
-horizontal_alignment = 1
 
-[node name="DummyGraphicsType2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer"]
+[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy graphics type, but a useful description belongs here!"
-
-[node name="GraphicsTypeIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer/DummyGraphicsType2"]
-layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
-
-[node name="GraphicsTypeName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer/DummyGraphicsType2"]
-layout_mode = 2
-text = "Dummy Graphics Type"
-horizontal_alignment = 1
 
 [node name="TargetAudienceSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
 visible = false
@@ -456,32 +337,14 @@ metadata/_tab_index = 5
 layout_mode = 2
 columns = 2
 
-[node name="DummyTargetAudience" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer"]
+[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy target audience, but a useful description belongs here!"
 
-[node name="TargetAudienceIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer/DummyTargetAudience"]
+[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
 
-[node name="TargetAudienceName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer/DummyTargetAudience"]
+[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-text = "Dummy Target Audience"
-horizontal_alignment = 1
 
-[node name="DummyTargetAudience2" type="VBoxContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer"]
+[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
-size_flags_horizontal = 3
-tooltip_text = "This is a dummy target audience, but a useful description belongs here!"
-
-[node name="TargetAudienceIcon" type="TextureRect" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer/DummyTargetAudience2"]
-layout_mode = 2
-texture = ExtResource("2_kdojq")
-expand_mode = 5
-
-[node name="TargetAudienceName" type="Label" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer/DummyTargetAudience2"]
-layout_mode = 2
-text = "Dummy Target Audience"
-horizontal_alignment = 1

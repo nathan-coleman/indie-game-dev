@@ -1,0 +1,43 @@
+using Godot;
+using TheGrandJaggard.Addons.ResizeToFitChildrenControl;
+
+namespace IndieGameDev.Game.UI;
+
+[Tool]
+public partial class LargeGridItem : ResizeToFitChildrenControl
+{
+    [Export]
+    public string ItemName
+    {
+        get => GetNodeOrNull<Label>("%ItemName")?.Text;
+        set
+        {
+            var itemName = GetNodeOrNull<Label>("%ItemName");
+            if (itemName != null)
+            {
+                itemName.Text = value;
+            }
+        }
+    }
+
+    [Export]
+    public Texture2D ItemIcon
+    {
+        get => GetNodeOrNull<TextureRect>("%ItemIcon")?.Texture;
+        set
+        {
+            var itemIcon = GetNodeOrNull<TextureRect>("%ItemIcon");
+            if (itemIcon != null)
+            {
+                itemIcon.Texture = value;
+            }
+        }
+    }
+
+    [Export(PropertyHint.MultilineText)]
+    public string ItemDescription
+    {
+        get => TooltipText;
+        set => TooltipText = value;
+    }
+}
