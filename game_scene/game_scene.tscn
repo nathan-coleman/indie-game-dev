@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://crgt8odc06uei"]
+[gd_scene load_steps=10 format=3 uid="uid://crgt8odc06uei"]
 
 [ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://assets/game_logo/icon.png" id="4_xb203"]
+[ext_resource type="Script" uid="uid://c64aq6ba605j8" path="res://game_scene/CenterContentController.cs" id="5_05euk"]
 [ext_resource type="Script" uid="uid://bqndy2iluye68" path="res://addons/resize_to_fit_children_control/ResizeToFitChildrenControl.cs" id="5_ap5n0"]
 [ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
 [ext_resource type="PackedScene" uid="uid://dixk4sdsfxhw0" path="res://game_scene/game_creation_elements/create_game_ui.tscn" id="5_e0oqy"]
 [ext_resource type="Script" uid="uid://b0lx6s55mura4" path="res://game_scene/hud_elements/BubblesBox.cs" id="5_j8flk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05euk"]
+
+[sub_resource type="Gradient" id="Gradient_8hgkq"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_05euk"]
+gradient = SubResource("Gradient_8hgkq")
+width = 24
+height = 24
+fill_from = Vector2(0.75, 0.75)
+fill_to = Vector2(0.25, 0.25)
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -566,9 +580,8 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="CenterContentLayoutBox" type="MarginContainer" parent="."]
+[node name="CenterContentLayoutBox" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.3
 anchor_top = 0.2
 anchor_right = 0.7
@@ -580,5 +593,53 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CreateGameBox" parent="CenterContentLayoutBox" instance=ExtResource("5_e0oqy")]
+[node name="InputBlocker" type="Control" parent="CenterContentLayoutBox"]
+visible = false
+layout_mode = 1
+anchor_left = -1.0
+anchor_top = -1.0
+anchor_right = 2.0
+anchor_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContentLayoutBox/InputBlocker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.25098)
+
+[node name="CenterContentTabContainer" type="TabContainer" parent="CenterContentLayoutBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_05euk")
+current_tab = 0
+tabs_visible = false
+deselect_enabled = true
+script = ExtResource("5_05euk")
+
+[node name="CreateGameBox" parent="CenterContentLayoutBox/CenterContentTabContainer" instance=ExtResource("5_e0oqy")]
 layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="CloseButton" type="Button" parent="CenterContentLayoutBox"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+icon = SubResource("GradientTexture2D_05euk")
+
+[connection signal="pressed" from="TopLayoutBox/NoActiveDevelopmentMenuBox/MarginContainer/NoActiveDevelopmentMenuContainer/StartGameBox/Button" to="CenterContentLayoutBox/CenterContentTabContainer" method="OpenCreateGameUi"]
+[connection signal="pressed" from="CenterContentLayoutBox/CloseButton" to="CenterContentLayoutBox/CenterContentTabContainer" method="CloseUi"]

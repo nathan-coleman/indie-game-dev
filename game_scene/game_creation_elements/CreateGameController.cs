@@ -8,13 +8,13 @@ public partial class CreateGameController : Node
 
     public override void _Ready()
     {
+        gameOptionSelectionTabContainer = GetNode<TabContainer>("%GameOptionSelectionTabContainer");
+
         ConnectButtons();
     }
 
     private void ConnectButtons()
     {
-        gameOptionSelectionTabContainer = GetNode<TabContainer>("%GameOptionSelectionTabContainer");
-
         GetNode<Button>("%OpenGenrePaneButton").Pressed += OpenGenrePane;
         GetNode<Button>("%OpenTopicPaneButton").Pressed += OpenTopicPane;
         GetNode<Button>("%OpenPlatformPaneButton").Pressed += OpenPlatformPane;
