@@ -240,11 +240,11 @@ text = "$1,000,000,000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CalenderBox" type="Control" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+[node name="CalendarBox" type="Control" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
 custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalenderBox"]
+[node name="BackgroundPanel" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalendarBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -252,7 +252,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalenderBox"]
+[node name="Label" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalendarBox"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -556,11 +556,11 @@ text = "Cost: $1,000,000,000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AddFeatuersBox" type="Control" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+[node name="AddFeaturesBox" type="Control" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
 custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/AddFeatuersBox"]
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/AddFeaturesBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -568,7 +568,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AddFeaturesButton" type="Button" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/AddFeatuersBox"]
+[node name="AddFeaturesButton" type="Button" parent="TopLayoutBox/ActiveDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/AddFeaturesBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
