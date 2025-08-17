@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://crgt8odc06uei"]
 
-[ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://assets/game_logo/icon.png" id="4_xb203"]
+[ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://resources/assets/game_logo/icon.png" id="4_xb203"]
 [ext_resource type="Script" uid="uid://c64aq6ba605j8" path="res://game_scene/CenterContentController.cs" id="5_05euk"]
 [ext_resource type="Script" uid="uid://bqndy2iluye68" path="res://addons/resize_to_fit_children_control/ResizeToFitChildrenControl.cs" id="5_ap5n0"]
 [ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]

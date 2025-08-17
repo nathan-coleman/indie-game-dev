@@ -10,7 +10,7 @@ Website: [nathan-coleman.com](https://nathan-coleman.com)
 ## Tools used
 
 #### Godot
-![Godot Engine Logo](/assets/godot_engine_logo/logo_vertical_color_dark.png)  
+![Godot Engine Logo](resources/assets/godot_engine_logo/logo_vertical_color_dark.png)  
 Author: [Juan Linietsky, Ariel Manzur, and contributors](https://godotengine.org/contact)  
 Source: [godotengine.org](https://godotengine.org/)  
 License: [MIT License](https://github.com/godotengine/godot/blob/master/LICENSE.txt)  
