@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dixk4sdsfxhw0"]
+[gd_scene load_steps=6 format=3 uid="uid://dixk4sdsfxhw0"]
 
+[ext_resource type="Script" uid="uid://bua46qwdkvxi7" path="res://game_scene/game_creation_elements/CreateGameController.cs" id="1_8hgkq"]
 [ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://assets/game_logo/icon.png" id="2_kdojq"]
 
 [sub_resource type="Gradient" id="Gradient_k340r"]
@@ -21,6 +22,9 @@ metadata/_snap_count = 8
 [node name="CreateGameBox" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+
+[node name="CreateGameController" type="Node" parent="."]
+script = ExtResource("1_8hgkq")
 
 [node name="TwoColumnsContainer" type="GridContainer" parent="."]
 layout_mode = 1
