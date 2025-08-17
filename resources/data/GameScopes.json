@@ -1,0 +1,8 @@
+[
+	{
+		"Name": "Small Game",
+		"Description": "Small Game",
+		"IconPath": "res://resources/assets/game_logo/icon.png",
+		"CompletionTime": 12
+	}
+]

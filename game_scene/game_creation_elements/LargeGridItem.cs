@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using TheGrandJaggard.Addons.ResizeToFitChildrenControl;
 
@@ -39,5 +40,11 @@ public partial class LargeGridItem : ResizeToFitChildrenControl
     {
         get => TooltipText;
         set => TooltipText = value;
+    }
+
+    public event Action Pressed
+    {
+        add => GetNode<Button>("Button").Pressed += value;
+        remove => GetNode<Button>("Button").Pressed -= value;
     }
 }

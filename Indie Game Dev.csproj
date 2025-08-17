@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>IndieGameDev</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="newtonsoft.json" Version="13.0.3" />
+  </ItemGroup>
 </Project>

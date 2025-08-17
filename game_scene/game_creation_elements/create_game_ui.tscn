@@ -27,6 +27,7 @@ offset_bottom = 1000.0
 
 [node name="CreateGameController" type="Node" parent="."]
 script = ExtResource("1_8hgkq")
+_largeGridItemPrefab = ExtResource("2_l15sv")
 
 [node name="TwoColumnsContainer" type="GridContainer" parent="."]
 layout_mode = 1
