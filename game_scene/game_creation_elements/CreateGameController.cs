@@ -15,7 +15,7 @@ public partial class CreateGameController : Node
 
     private void ConnectButtons()
     {
-        GetNode<Button>("%OpenSizePaneButton").Pressed += OpenSizePane;
+        GetNode<Button>("%OpenScopePaneButton").Pressed += OpenScopePane;
         GetNode<Button>("%OpenGenrePaneButton").Pressed += OpenGenrePane;
         GetNode<Button>("%OpenTopicPaneButton").Pressed += OpenTopicPane;
         GetNode<Button>("%OpenPlatformPaneButton").Pressed += OpenPlatformPane;
@@ -23,7 +23,7 @@ public partial class CreateGameController : Node
         GetNode<Button>("%OpenTargetAudiencePaneButton").Pressed += OpenTargetAudiencePane;
     }
 
-    private void OpenSizePane() => gameOptionSelectionTabContainer.CurrentTab = 0;
+    private void OpenScopePane() => gameOptionSelectionTabContainer.CurrentTab = 0;
     private void OpenGenrePane() => gameOptionSelectionTabContainer.CurrentTab = 1;
     private void OpenTopicPane() => gameOptionSelectionTabContainer.CurrentTab = 2;
     private void OpenPlatformPane() => gameOptionSelectionTabContainer.CurrentTab = 3;
