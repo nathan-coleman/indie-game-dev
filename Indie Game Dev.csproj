@@ -1,10 +1,11 @@
 <Project Sdk="Godot.NET.Sdk/4.4.1">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <EnableDynamicLoading>true</EnableDynamicLoading>
-    <RootNamespace>IndieGameDev</RootNamespace>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="newtonsoft.json" Version="13.0.3" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <RootNamespace>IndieGameDev</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="newtonsoft.json" Version="13.0.3" />
+    </ItemGroup>
 </Project>

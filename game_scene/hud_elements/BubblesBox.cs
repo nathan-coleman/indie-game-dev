@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -5,7 +6,7 @@ namespace IndieGameDev.Game.UI;
 
 public partial class BubblesBox : Node
 {
-    [Export] private PackedScene _bubbleBarItemPrefab;
+    [Export] private PackedScene? _bubbleBarItemPrefab;
 
     private static readonly List<(string name, int amount, string description)> demoBubbleValues = new()
     {
@@ -20,6 +21,8 @@ public partial class BubblesBox : Node
 
     public override void _Ready()
     {
+        ArgumentNullException.ThrowIfNull(_bubbleBarItemPrefab);
+
         var bubbleBarContainer = GetNode<Control>("%BubbleBarContainer");
 
         foreach (var childNode in bubbleBarContainer.GetChildren())

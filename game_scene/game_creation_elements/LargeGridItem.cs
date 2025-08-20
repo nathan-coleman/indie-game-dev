@@ -8,7 +8,7 @@ namespace IndieGameDev.Game.UI;
 public partial class LargeGridItem : ResizeToFitChildrenControl
 {
     [Export]
-    public string ItemName
+    public string? ItemName
     {
         get => GetNodeOrNull<Label>("%ItemName")?.Text;
         set
@@ -22,7 +22,7 @@ public partial class LargeGridItem : ResizeToFitChildrenControl
     }
 
     [Export]
-    public Texture2D ItemIcon
+    public Texture2D? ItemIcon
     {
         get => GetNodeOrNull<TextureRect>("%ItemIcon")?.Texture;
         set
