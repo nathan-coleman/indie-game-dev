@@ -29,7 +29,7 @@ public partial class CreateGameController : Node
         GetNode<Button>("%OpenTopicPaneButton").Pressed += OpenTopicPane;
         GetNode<Button>("%OpenPlatformPaneButton").Pressed += OpenPlatformPane;
         GetNode<Button>("%OpenGraphicsPaneButton").Pressed += OpenGraphicsPane;
-        GetNode<Button>("%OpenTargetAudiencePaneButton").Pressed += OpenTargetAudiencePane;
+        GetNode<Button>("%OpenAudiencePaneButton").Pressed += OpenAudiencePane;
     }
 
     private void OpenScopePane() => gameOptionSelectionTabContainer.CurrentTab = 0;
@@ -37,7 +37,7 @@ public partial class CreateGameController : Node
     private void OpenTopicPane() => gameOptionSelectionTabContainer.CurrentTab = 2;
     private void OpenPlatformPane() => gameOptionSelectionTabContainer.CurrentTab = 3;
     private void OpenGraphicsPane() => gameOptionSelectionTabContainer.CurrentTab = 4;
-    private void OpenTargetAudiencePane() => gameOptionSelectionTabContainer.CurrentTab = 5;
+    private void OpenAudiencePane() => gameOptionSelectionTabContainer.CurrentTab = 5;
 
     private void LoadData()
     {
