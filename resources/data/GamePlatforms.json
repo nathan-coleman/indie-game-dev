@@ -1,0 +1,50 @@
+[
+    {
+        "Name": "PC",
+        "Description": "",
+        "BubbleEffectiveness": {
+            "Story":        0.9,
+            "Engine":       0.1,
+            "Art":          0.7,
+            "Mechanics":    0.1,
+            "Sound":        0.5,
+            "Level Design": 0.7
+        }
+    },
+    {
+        "Name": "Console",
+        "Description": "",
+        "BubbleEffectiveness": {
+            "Story":        0.2,
+            "Engine":       0.5,
+            "Art":          0.5,
+            "Mechanics":    0.7,
+            "Sound":        0.5,
+            "Level Design": 0.3
+        }
+    },
+    {
+        "Name": "Mobile",
+        "Description": "",
+        "BubbleEffectiveness": {
+            "Story":        0.2,
+            "Engine":       0.5,
+            "Art":          0.5,
+            "Mechanics":    0.7,
+            "Sound":        0.5,
+            "Level Design": 0.3
+        }
+    },
+    {
+        "Name": "Arcade",
+        "Description": "",
+        "BubbleEffectiveness": {
+            "Story":        0.2,
+            "Engine":       0.5,
+            "Art":          0.5,
+            "Mechanics":    0.7,
+            "Sound":        0.5,
+            "Level Design": 0.3
+        }
+    }
+]

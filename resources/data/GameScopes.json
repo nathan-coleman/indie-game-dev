@@ -1,8 +1,27 @@
 [
-	{
-		"Name": "Small Game",
-		"Description": "Small Game",
-		"IconPath": "res://resources/assets/game_logo/icon.png",
-		"CompletionTime": 12
-	}
+    {
+        "Name": "Game Jam",
+        "Description": "",
+        "CompletionTime": 4
+    },
+    {
+        "Name": "Small Game",
+        "Description": "",
+        "CompletionTime": 12
+    },
+    {
+        "Name": "Medium Game",
+        "Description": "",
+        "CompletionTime": 24
+    },
+    {
+        "Name": "Large Game",
+        "Description": "",
+        "CompletionTime": 48
+    },
+    {
+        "Name": "AAA Game",
+        "Description": "",
+        "CompletionTime": 96
+    }
 ]

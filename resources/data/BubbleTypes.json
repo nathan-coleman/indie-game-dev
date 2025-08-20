@@ -1,0 +1,42 @@
+[
+    {
+        "Name": "Story",
+        "Description": "",
+        "Color": "#FFFFFF"
+    },
+    {
+        "Name": "Engine",
+        "Description": "",
+        "Color": "#FFFFFF"
+    },
+    {
+        "Name": "Art",
+        "Description": "",
+        "Color": "#FFFFFF"
+    },
+    {
+        "Name": "Mechanics",
+        "Description": "",
+        "Color": "#FFFFFF"
+    },
+    {
+        "Name": "Sound",
+        "Description": "",
+        "Color": "#FFFFFF"
+    },
+    {
+        "Name": "Level Design",
+        "Description": "",
+        "Color": "#FFFFFF"
+    },
+    {
+        "Name": "Hype",
+        "Description": "",
+        "Color": "#FFFFFF"
+    },
+    {
+        "Name": "Polish",
+        "Description": "",
+        "Color": "#FFFFFF"
+    }
+]

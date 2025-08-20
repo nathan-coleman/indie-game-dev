@@ -42,10 +42,14 @@ public partial class CreateGameController : Node
 
     private void LoadData()
     {
-        LoadScopes();
+        LoadScopeOptions();
+        LoadGenreOptions();
+        LoadTopicOptions();
+        LoadPlatformOptions();
+        LoadAudienceOptions();
     }
 
-    private void LoadScopes()
+    private void LoadScopeOptions()
     {
         var gameScopes = LoadJsonAsObject<List<GameScope>>("res://resources/data/GameScopes.json");
         var gameScopeSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("ScopeSelectionBox/GridContainer");
@@ -54,8 +58,60 @@ public partial class CreateGameController : Node
 
     private void ScopeSelected(IListItemModel selected)
     {
-        GetNode<Button>("%OpenScopePaneButton").Text = $"Game Scope: {selected.Name}";
-        GetNode<Button>("%OpenScopePaneButton").TooltipText = $"Selected: {selected.Description}";
+        GetNode<Button>("%OpenScopePaneButton").Text = $"Scope: {selected.Name}";
+        GetNode<Button>("%OpenScopePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
+    }
+
+    private void LoadGenreOptions()
+    {
+        var gameGenres = LoadJsonAsObject<List<GameGenre>>("res://resources/data/GameGenres.json");
+        var gameGenreSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("GenreSelectionBox/GridContainer");
+        InstantiateListItems(gameGenres.Cast<IListItemModel>(), gameGenreSelectionContainer, GenreSelected);
+    }
+
+    private void GenreSelected(IListItemModel selected)
+    {
+        GetNode<Button>("%OpenGenrePaneButton").Text = $"Genre: {selected.Name}";
+        GetNode<Button>("%OpenGenrePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
+    }
+
+    private void LoadTopicOptions()
+    {
+        var gameTopics = LoadJsonAsObject<List<GameTopic>>("res://resources/data/GameTopics.json");
+        var gameTopicSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("TopicSelectionBox/GridContainer");
+        InstantiateListItems(gameTopics.Cast<IListItemModel>(), gameTopicSelectionContainer, TopicSelected);
+    }
+
+    private void TopicSelected(IListItemModel selected)
+    {
+        GetNode<Button>("%OpenTopicPaneButton").Text = $"Topic: {selected.Name}";
+        GetNode<Button>("%OpenTopicPaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
+    }
+
+    private void LoadPlatformOptions()
+    {
+        var gamePlatforms = LoadJsonAsObject<List<GamePlatform>>("res://resources/data/GamePlatforms.json");
+        var gamePlatformSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("PlatformSelectionBox/GridContainer");
+        InstantiateListItems(gamePlatforms.Cast<IListItemModel>(), gamePlatformSelectionContainer, PlatformSelected);
+    }
+
+    private void PlatformSelected(IListItemModel selected)
+    {
+        GetNode<Button>("%OpenPlatformPaneButton").Text = $"Platform: {selected.Name}";
+        GetNode<Button>("%OpenPlatformPaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
+    }
+
+    private void LoadAudienceOptions()
+    {
+        var gameAudiences = LoadJsonAsObject<List<GameAudience>>("res://resources/data/GameAudiences.json");
+        var gameAudienceSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("AudienceSelectionBox/GridContainer");
+        InstantiateListItems(gameAudiences.Cast<IListItemModel>(), gameAudienceSelectionContainer, AudienceSelected);
+    }
+
+    private void AudienceSelected(IListItemModel selected)
+    {
+        GetNode<Button>("%OpenAudiencePaneButton").Text = $"Game Audience: {selected.Name}";
+        GetNode<Button>("%OpenAudiencePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
     }
 
     private void InstantiateListItems(IEnumerable<IListItemModel> listData, Control? instantiationParent, Action<IListItemModel>? buttonPressedCallback)
