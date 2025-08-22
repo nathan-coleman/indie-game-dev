@@ -4,15 +4,14 @@ using System.Linq;
 using Godot;
 using IndieGameDev.Models;
 using IndieGameDev.Utils;
-using Newtonsoft.Json;
+using IndieGameDev.Backend;
 
 namespace IndieGameDev.Game.UI;
 
 public partial class CreateGameController : Node
 {
-    private const string DEFAULT_ICON_PATH = "res://resources/assets/game_logo/icon.png";
 
-    [Export] PackedScene? _largeGridItemPrefab;
+    [Export] private PackedScene? _largeGridItemPrefab;
 
     private TabContainer? gameOptionSelectionTabContainer;
 
@@ -51,9 +50,9 @@ public partial class CreateGameController : Node
 
     private void LoadScopeOptions()
     {
-        var gameScopes = LoadJsonAsObject<List<GameScope>>("res://resources/data/GameScopes.json");
+        var gameScopes = GameController.Instance?.DataLoader.LoadListItems<List<GameScope>>("GameScopes");
         var gameScopeSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("ScopeSelectionBox/GridContainer");
-        InstantiateListItems(gameScopes.Cast<IListItem>(), gameScopeSelectionContainer, ScopeSelected);
+        InstantiateListItems(gameScopes, gameScopeSelectionContainer, ScopeSelected);
     }
 
     private void ScopeSelected(IListItem selected)
@@ -64,9 +63,9 @@ public partial class CreateGameController : Node
 
     private void LoadGenreOptions()
     {
-        var gameGenres = LoadJsonAsObject<List<GameGenre>>("res://resources/data/GameGenres.json");
+        var gameGenres = GameController.Instance?.DataLoader.LoadListItems<List<GameGenre>>("GameGenres");
         var gameGenreSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("GenreSelectionBox/GridContainer");
-        InstantiateListItems(gameGenres.Cast<IListItem>(), gameGenreSelectionContainer, GenreSelected);
+        InstantiateListItems(gameGenres, gameGenreSelectionContainer, GenreSelected);
     }
 
     private void GenreSelected(IListItem selected)
@@ -77,9 +76,9 @@ public partial class CreateGameController : Node
 
     private void LoadTopicOptions()
     {
-        var gameTopics = LoadJsonAsObject<List<GameTopic>>("res://resources/data/GameTopics.json");
+        var gameTopics = GameController.Instance?.DataLoader.LoadListItems<List<GameTopic>>("GameTopics");
         var gameTopicSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("TopicSelectionBox/GridContainer");
-        InstantiateListItems(gameTopics.Cast<IListItem>(), gameTopicSelectionContainer, TopicSelected);
+        InstantiateListItems(gameTopics, gameTopicSelectionContainer, TopicSelected);
     }
 
     private void TopicSelected(IListItem selected)
@@ -90,9 +89,9 @@ public partial class CreateGameController : Node
 
     private void LoadPlatformOptions()
     {
-        var gamePlatforms = LoadJsonAsObject<List<GamePlatform>>("res://resources/data/GamePlatforms.json");
+        var gamePlatforms = GameController.Instance?.DataLoader.LoadListItems<List<GamePlatform>>("GamePlatforms");
         var gamePlatformSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("PlatformSelectionBox/GridContainer");
-        InstantiateListItems(gamePlatforms.Cast<IListItem>(), gamePlatformSelectionContainer, PlatformSelected);
+        InstantiateListItems(gamePlatforms, gamePlatformSelectionContainer, PlatformSelected);
     }
 
     private void PlatformSelected(IListItem selected)
@@ -103,9 +102,9 @@ public partial class CreateGameController : Node
 
     private void LoadAudienceOptions()
     {
-        var gameAudiences = LoadJsonAsObject<List<GameAudience>>("res://resources/data/GameAudiences.json");
+        var gameAudiences = GameController.Instance?.DataLoader.LoadListItems<List<GameAudience>>("GameAudiences");
         var gameAudienceSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("AudienceSelectionBox/GridContainer");
-        InstantiateListItems(gameAudiences.Cast<IListItem>(), gameAudienceSelectionContainer, AudienceSelected);
+        InstantiateListItems(gameAudiences, gameAudienceSelectionContainer, AudienceSelected);
     }
 
     private void AudienceSelected(IListItem selected)
@@ -114,20 +113,20 @@ public partial class CreateGameController : Node
         GetNode<Button>("%OpenAudiencePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
     }
 
-    private void InstantiateListItems(IEnumerable<IListItem> listData, Control? instantiationParent, Action<IListItem>? buttonPressedCallback)
+    private void InstantiateListItems<T>(T? listData, Control? instantiationParent, Action<IListItem>? buttonPressedCallback) where T : IEnumerable<IListItem>, new()
     {
         ArgumentNullException.ThrowIfNull(instantiationParent);
         ArgumentNullException.ThrowIfNull(_largeGridItemPrefab);
 
         instantiationParent.QueueFreeChildren();
 
-        foreach (var listItem in listData)
+        foreach (var listItem in listData ?? new())
         {
             var gridItem = _largeGridItemPrefab.Instantiate<LargeGridItem>();
 
             gridItem.ItemName = listItem.Name;
             gridItem.ItemDescription = listItem.Description;
-            gridItem.ItemIcon = ResourceLoader.Load<Texture2D>(listItem.IconPath ?? DEFAULT_ICON_PATH);
+            gridItem.ItemIcon = ResourceLoader.Load<Texture2D>(listItem.IconPath);
             if (buttonPressedCallback != null)
             {
                 gridItem.Pressed += () => buttonPressedCallback(listItem);
@@ -135,17 +134,5 @@ public partial class CreateGameController : Node
 
             instantiationParent.AddChild(gridItem);
         }
-    }
-
-    private static T LoadJsonAsObject<T>(string filePath)
-    {
-        using var file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
-        if (file == null) throw new JsonException($"Error loading '{filePath}': {FileAccess.GetOpenError()}");
-
-        var rawJson = file.GetAsText();
-        var deserializedObject = JsonConvert.DeserializeObject<T>(rawJson);
-        if (deserializedObject == null) throw new JsonException($"Error deserializing json in '{filePath}' to {typeof(T)}");
-
-        return deserializedObject;
     }
 }
