@@ -53,10 +53,10 @@ public partial class CreateGameController : Node
     {
         var gameScopes = LoadJsonAsObject<List<GameScope>>("res://resources/data/GameScopes.json");
         var gameScopeSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("ScopeSelectionBox/GridContainer");
-        InstantiateListItems(gameScopes.Cast<IListItemModel>(), gameScopeSelectionContainer, ScopeSelected);
+        InstantiateListItems(gameScopes.Cast<IListItem>(), gameScopeSelectionContainer, ScopeSelected);
     }
 
-    private void ScopeSelected(IListItemModel selected)
+    private void ScopeSelected(IListItem selected)
     {
         GetNode<Button>("%OpenScopePaneButton").Text = $"Scope: {selected.Name}";
         GetNode<Button>("%OpenScopePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
@@ -66,10 +66,10 @@ public partial class CreateGameController : Node
     {
         var gameGenres = LoadJsonAsObject<List<GameGenre>>("res://resources/data/GameGenres.json");
         var gameGenreSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("GenreSelectionBox/GridContainer");
-        InstantiateListItems(gameGenres.Cast<IListItemModel>(), gameGenreSelectionContainer, GenreSelected);
+        InstantiateListItems(gameGenres.Cast<IListItem>(), gameGenreSelectionContainer, GenreSelected);
     }
 
-    private void GenreSelected(IListItemModel selected)
+    private void GenreSelected(IListItem selected)
     {
         GetNode<Button>("%OpenGenrePaneButton").Text = $"Genre: {selected.Name}";
         GetNode<Button>("%OpenGenrePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
@@ -79,10 +79,10 @@ public partial class CreateGameController : Node
     {
         var gameTopics = LoadJsonAsObject<List<GameTopic>>("res://resources/data/GameTopics.json");
         var gameTopicSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("TopicSelectionBox/GridContainer");
-        InstantiateListItems(gameTopics.Cast<IListItemModel>(), gameTopicSelectionContainer, TopicSelected);
+        InstantiateListItems(gameTopics.Cast<IListItem>(), gameTopicSelectionContainer, TopicSelected);
     }
 
-    private void TopicSelected(IListItemModel selected)
+    private void TopicSelected(IListItem selected)
     {
         GetNode<Button>("%OpenTopicPaneButton").Text = $"Topic: {selected.Name}";
         GetNode<Button>("%OpenTopicPaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
@@ -92,10 +92,10 @@ public partial class CreateGameController : Node
     {
         var gamePlatforms = LoadJsonAsObject<List<GamePlatform>>("res://resources/data/GamePlatforms.json");
         var gamePlatformSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("PlatformSelectionBox/GridContainer");
-        InstantiateListItems(gamePlatforms.Cast<IListItemModel>(), gamePlatformSelectionContainer, PlatformSelected);
+        InstantiateListItems(gamePlatforms.Cast<IListItem>(), gamePlatformSelectionContainer, PlatformSelected);
     }
 
-    private void PlatformSelected(IListItemModel selected)
+    private void PlatformSelected(IListItem selected)
     {
         GetNode<Button>("%OpenPlatformPaneButton").Text = $"Platform: {selected.Name}";
         GetNode<Button>("%OpenPlatformPaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
@@ -105,16 +105,16 @@ public partial class CreateGameController : Node
     {
         var gameAudiences = LoadJsonAsObject<List<GameAudience>>("res://resources/data/GameAudiences.json");
         var gameAudienceSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("AudienceSelectionBox/GridContainer");
-        InstantiateListItems(gameAudiences.Cast<IListItemModel>(), gameAudienceSelectionContainer, AudienceSelected);
+        InstantiateListItems(gameAudiences.Cast<IListItem>(), gameAudienceSelectionContainer, AudienceSelected);
     }
 
-    private void AudienceSelected(IListItemModel selected)
+    private void AudienceSelected(IListItem selected)
     {
         GetNode<Button>("%OpenAudiencePaneButton").Text = $"Game Audience: {selected.Name}";
         GetNode<Button>("%OpenAudiencePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
     }
 
-    private void InstantiateListItems(IEnumerable<IListItemModel> listData, Control? instantiationParent, Action<IListItemModel>? buttonPressedCallback)
+    private void InstantiateListItems(IEnumerable<IListItem> listData, Control? instantiationParent, Action<IListItem>? buttonPressedCallback)
     {
         ArgumentNullException.ThrowIfNull(instantiationParent);
         ArgumentNullException.ThrowIfNull(_largeGridItemPrefab);

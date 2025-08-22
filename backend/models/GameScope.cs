@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace IndieGameDev.Models;
 
-public record GameScope : IListItemModel
+public record GameScope : IListItem
 {
     [JsonProperty(Required = Required.Always)]
     public required string Name { get; set; }
