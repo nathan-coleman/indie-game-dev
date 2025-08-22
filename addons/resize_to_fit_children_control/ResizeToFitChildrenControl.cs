@@ -26,14 +26,9 @@ public partial class ResizeToFitChildrenControl : Control
     [Export] private SizeMode _useChildYMode;
     [ExportToolButton("Recalculate Size")] private Callable _ { get => new(this, nameof(RecalculateSize)); }
 
-    public override void _Ready()
+    public override void _EnterTree()
     {
         if (Engine.IsEditorHint()) return;
-
-        foreach (Node child in GetChildren())
-        {
-            OnChildEnteredTree(child);
-        }
 
         ChildEnteredTree += OnChildEnteredTree;
         ChildExitingTree += OnChildExitingTree;
@@ -46,6 +41,7 @@ public partial class ResizeToFitChildrenControl : Control
         if (child is not Control controlChild) return;
         controlChild.Resized += RecalculateSize;
         controlChild.MinimumSizeChanged += RecalculateSize;
+        controlChild.VisibilityChanged += RecalculateSize;
     }
 
     private void OnChildExitingTree(Node child)

@@ -1,18 +1,19 @@
+using System;
 using Godot;
 
 namespace IndieGameDev.Menus;
 
 public partial class MyMainMenu : Control
 {
-	[Export(PropertyHint.File, "*.tscn")] private string _gameScenePath;
+	[Export(PropertyHint.File, "*.tscn")] private string? _gameScenePath;
 
-	[Export] private PackedScene _optionsPackedScene;
+	[Export] private PackedScene? _optionsPackedScene;
 
-	[Export] private PackedScene _creditsPackedScene;
+	[Export] private PackedScene? _creditsPackedScene;
 
-	private Control _optionsScene;
-	private Control _creditsScene;
-	private Control _subMenu;
+	private Control? _optionsScene;
+	private Control? _creditsScene;
+	private Control? _subMenu;
 
 	public override void _Ready()
 	{
@@ -50,12 +51,15 @@ public partial class MyMainMenu : Control
 
     private void LoadGameScene()
 	{
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(_gameScenePath);
 		var sceneLoader = GetNode("/root/SceneLoader");
 		sceneLoader.Call("load_scene", _gameScenePath);
 	}
 
-	private void OpenSubMenu(Control menu)
+	private void OpenSubMenu(Control? menu)
 	{
+		if (menu == null) return;
+
 		_subMenu = menu;
 		_subMenu.Show();
 		GetNode<Button>("%BackButton").Show();
@@ -64,8 +68,7 @@ public partial class MyMainMenu : Control
 
 	private void CloseSubMenu()
 	{
-		if (_subMenu == null)
-			return;
+		if (_subMenu == null) return;
 
 		_subMenu.Hide();
 		_subMenu = null;

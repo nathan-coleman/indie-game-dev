@@ -1,0 +1,38 @@
+[
+	{
+		"Name": "Wild West",
+		"Description": "",
+		"BubbleEffectiveness": {
+			"Story":        0.9,
+			"Engine":       0.1,
+			"Art":          0.7,
+			"Mechanics":    0.1,
+			"Sound":        0.5,
+			"Level Design": 0.7
+		}
+	},
+	{
+		"Name": "Sci-Fi",
+		"Description": "",
+		"BubbleEffectiveness": {
+			"Story":        0.2,
+			"Engine":       0.5,
+			"Art":          0.5,
+			"Mechanics":    0.7,
+			"Sound":        0.5,
+			"Level Design": 0.3
+		}
+	},
+	{
+		"Name": "Aliens",
+		"Description": "",
+		"BubbleEffectiveness": {
+			"Story":        0.2,
+			"Engine":       0.5,
+			"Art":          0.5,
+			"Mechanics":    0.7,
+			"Sound":        0.5,
+			"Level Design": 0.3
+		}
+	}
+]

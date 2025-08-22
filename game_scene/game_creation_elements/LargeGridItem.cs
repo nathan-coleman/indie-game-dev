@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using TheGrandJaggard.Addons.ResizeToFitChildrenControl;
 
@@ -7,7 +8,7 @@ namespace IndieGameDev.Game.UI;
 public partial class LargeGridItem : ResizeToFitChildrenControl
 {
     [Export]
-    public string ItemName
+    public string? ItemName
     {
         get => GetNodeOrNull<Label>("%ItemName")?.Text;
         set
@@ -21,7 +22,7 @@ public partial class LargeGridItem : ResizeToFitChildrenControl
     }
 
     [Export]
-    public Texture2D ItemIcon
+    public Texture2D? ItemIcon
     {
         get => GetNodeOrNull<TextureRect>("%ItemIcon")?.Texture;
         set
@@ -39,5 +40,11 @@ public partial class LargeGridItem : ResizeToFitChildrenControl
     {
         get => TooltipText;
         set => TooltipText = value;
+    }
+
+    public event Action Pressed
+    {
+        add => GetNode<Button>("Button").Pressed += value;
+        remove => GetNode<Button>("Button").Pressed -= value;
     }
 }

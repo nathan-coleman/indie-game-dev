@@ -1,14 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://b10npsji1x5pl"]
 
-[ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://assets/game_logo/icon.png" id="1_rhn18"]
+[ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://resources/assets/game_logo/icon.png" id="1_rhn18"]
 [ext_resource type="Script" uid="uid://4gsjn3kvv5lc" path="res://game_scene/game_creation_elements/LargeGridItem.cs" id="1_v74g8"]
 
-[node name="LargeGridItem" type="Button"]
-custom_minimum_size = Vector2(120, 189)
+[node name="LargeGridItem" type="Control"]
+custom_minimum_size = Vector2(0, 189)
+layout_mode = 3
+anchors_preset = 0
 offset_right = 120.0
-offset_bottom = 120.0
+offset_bottom = 189.0
 size_flags_horizontal = 3
 tooltip_text = "This is a dummy item, but a useful description belongs here!"
+focus_mode = 2
 script = ExtResource("1_v74g8")
 ItemName = "Dummy Item"
 ItemIcon = ExtResource("1_rhn18")
@@ -17,6 +20,12 @@ _setYMode = 1
 _useChildYMode = 2
 metadata/_custom_type_script = "uid://bqndy2iluye68"
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="LayoutContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -24,11 +33,13 @@ anchor_right = 1.0
 offset_bottom = 189.0
 grow_horizontal = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="ItemIcon" type="TextureRect" parent="LayoutContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("1_rhn18")
 expand_mode = 5
 

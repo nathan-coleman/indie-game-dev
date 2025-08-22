@@ -27,6 +27,7 @@ offset_bottom = 1000.0
 
 [node name="CreateGameController" type="Node" parent="."]
 script = ExtResource("1_8hgkq")
+_largeGridItemPrefab = ExtResource("2_l15sv")
 
 [node name="TwoColumnsContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -80,11 +81,11 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SizeBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
+[node name="ScopeBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 
-[node name="OpenSizePaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/SizeBox"]
+[node name="OpenScopePaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/ScopeBox"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -92,7 +93,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game Size: None selected"
+text = "Game Scope: None selected"
 icon_alignment = 1
 expand_icon = true
 
@@ -145,6 +146,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="GraphicsBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
+visible = false
 custom_minimum_size = Vector2(260, 40)
 layout_mode = 2
 
@@ -160,11 +162,11 @@ text = "Graphics: None selected"
 icon_alignment = 1
 expand_icon = true
 
-[node name="TargetAudienceBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
+[node name="AudienceBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer"]
 custom_minimum_size = Vector2(260, 40)
 layout_mode = 2
 
-[node name="OpenTargetAudiencePaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/TargetAudienceBox"]
+[node name="OpenAudiencePaneButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationMenuItemsContainer/AudienceBox"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -172,7 +174,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Target Audience: None selected"
+text = "Audience: None selected"
 icon_alignment = 1
 expand_icon = true
 
@@ -224,24 +226,24 @@ current_tab = 0
 tabs_visible = false
 deselect_enabled = true
 
-[node name="SizeSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
+[node name="ScopeSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="GridContainer" type="GridContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox"]
+[node name="GridContainer" type="GridContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/ScopeSelectionBox"]
 layout_mode = 2
 columns = 2
 
-[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
+[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/ScopeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
 
-[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
+[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/ScopeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
 
-[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
+[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/ScopeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
 
-[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/SizeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
+[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/ScopeSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
 
 [node name="GenreSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
@@ -328,23 +330,23 @@ layout_mode = 2
 [node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/GraphicsSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
 
-[node name="TargetAudienceSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
+[node name="AudienceSelectionBox" type="MarginContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 5
 
-[node name="GridContainer" type="GridContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox"]
+[node name="GridContainer" type="GridContainer" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/AudienceSelectionBox"]
 layout_mode = 2
 columns = 2
 
-[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
+[node name="LargeGridItem" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/AudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
 
-[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
+[node name="LargeGridItem2" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/AudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
 
-[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
+[node name="LargeGridItem3" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/AudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
 
-[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/TargetAudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
+[node name="LargeGridItem4" parent="TwoColumnsContainer/GameOptionSelectionBox/GameOptionSelectionTabContainer/AudienceSelectionBox/GridContainer" instance=ExtResource("2_l15sv")]
 layout_mode = 2
