@@ -1,52 +1,52 @@
 [
-    {
-        "Name": "Adventure",
-        "Description": "Adventure games are about discovery and story.",
-        "ParentGenre": null,
-        "BubbleEffectiveness": {
-            "Story":        0.9,
-            "Engine":       0.1,
-            "Art":          0.7,
-            "Mechanics":    0.1,
-            "Sound":        0.5,
-            "Level Design": 0.7
-        }
-    },
-    {
-        "Name": "Point-and-Click",
-        "Description": "I'm realizing that AI might be able to write these descriptions for me.",
-        "ParentGenre": "Adventure",
-        "BubbleEffectiveness": {
-            "Story":        0.9,
-            "Engine":       0.1,
-            "Art":          0.7,
-            "Mechanics":    0.1,
-            "Sound":        0.5,
-            "Level Design": 0.7
-        }
-    },
-    {
-        "Name": "Strategy",
-        "Description": "",
-        "BubbleEffectiveness": {
-            "Story":        0.2,
-            "Engine":       0.9,
-            "Art":          0.4,
-            "Mechanics":    0.8,
-            "Sound":        0.3,
-            "Level Design": 0.4
-        }
-    },
-    {
-        "Name": "Test",
-        "Description": "Used for testing only.",
-        "BubbleEffectiveness": {
-            "Story":        0.5,
-            "Engine":       0.5,
-            "Art":          0.5,
-            "Mechanics":    0.5,
-            "Sound":        0.5,
-            "Level Design": 0.5
-        }
-    }
+	{
+		"Name": "Adventure",
+		"Description": "Adventure games are about discovery and story.",
+		"ParentGenre": null,
+		"BubbleEffectiveness": {
+			"Story":        0.9,
+			"Engine":       0.1,
+			"Art":          0.7,
+			"Mechanics":    0.1,
+			"Sound":        0.5,
+			"Level Design": 0.7
+		}
+	},
+	{
+		"Name": "Point-and-Click",
+		"Description": "I'm realizing that AI might be able to write these descriptions for me.",
+		"ParentGenre": "Adventure",
+		"BubbleEffectiveness": {
+			"Story":        0.9,
+			"Engine":       0.1,
+			"Art":          0.7,
+			"Mechanics":    0.1,
+			"Sound":        0.5,
+			"Level Design": 0.7
+		}
+	},
+	{
+		"Name": "Strategy",
+		"Description": "",
+		"BubbleEffectiveness": {
+			"Story":        0.2,
+			"Engine":       0.9,
+			"Art":          0.4,
+			"Mechanics":    0.8,
+			"Sound":        0.3,
+			"Level Design": 0.4
+		}
+	},
+	{
+		"Name": "Test",
+		"Description": "Used for testing only.",
+		"BubbleEffectiveness": {
+			"Story":        0.5,
+			"Engine":       0.5,
+			"Art":          0.5,
+			"Mechanics":    0.5,
+			"Sound":        0.5,
+			"Level Design": 0.5
+		}
+	}
 ]

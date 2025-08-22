@@ -1,54 +1,54 @@
 [
-    {
-        "Name": "All",
-        "Description": "",
-        "BubbleEffectiveness": {
-            "Story":        0.5,
-            "Engine":       0.5,
-            "Art":          0.5,
-            "Mechanics":    0.5,
-            "Sound":        0.5,
-            "Level Design": 0.5
-        },
-        "TechnologyPrerequisite": null
-    },
-    {
-        "Name": "Children",
-        "Description": "",
-        "BubbleEffectiveness": {
-            "Story":        0.4,
-            "Engine":       0.4,
-            "Art":          0.6,
-            "Mechanics":    0.3,
-            "Sound":        0.6,
-            "Level Design": 0.7
-        },
-        "TechnologyPrerequisite": "Target Audiences"
-    },
-    {
-        "Name": "Teens",
-        "Description": "",
-        "BubbleEffectiveness": {
-            "Story":        0.6,
-            "Engine":       0.4,
-            "Art":          0.6,
-            "Mechanics":    0.8,
-            "Sound":        0.3,
-            "Level Design": 0.3
-        },
-        "TechnologyPrerequisite": "Target Audiences"
-    },
-    {
-        "Name": "Adult",
-        "Description": "",
-        "BubbleEffectiveness": {
-            "Story":        0.8,
-            "Engine":       0.4,
-            "Art":          0.4,
-            "Mechanics":    0.7,
-            "Sound":        0.4,
-            "Level Design": 0.4
-        },
-        "TechnologyPrerequisite": "Target Audiences"
-    }
+	{
+		"Name": "All",
+		"Description": "",
+		"BubbleEffectiveness": {
+			"Story":        0.5,
+			"Engine":       0.5,
+			"Art":          0.5,
+			"Mechanics":    0.5,
+			"Sound":        0.5,
+			"Level Design": 0.5
+		},
+		"TechnologyPrerequisite": null
+	},
+	{
+		"Name": "Children",
+		"Description": "",
+		"BubbleEffectiveness": {
+			"Story":        0.4,
+			"Engine":       0.4,
+			"Art":          0.6,
+			"Mechanics":    0.3,
+			"Sound":        0.6,
+			"Level Design": 0.7
+		},
+		"TechnologyPrerequisite": "Target Audiences"
+	},
+	{
+		"Name": "Teens",
+		"Description": "",
+		"BubbleEffectiveness": {
+			"Story":        0.6,
+			"Engine":       0.4,
+			"Art":          0.6,
+			"Mechanics":    0.8,
+			"Sound":        0.3,
+			"Level Design": 0.3
+		},
+		"TechnologyPrerequisite": "Target Audiences"
+	},
+	{
+		"Name": "Adult",
+		"Description": "",
+		"BubbleEffectiveness": {
+			"Story":        0.8,
+			"Engine":       0.4,
+			"Art":          0.4,
+			"Mechanics":    0.7,
+			"Sound":        0.4,
+			"Level Design": 0.4
+		},
+		"TechnologyPrerequisite": "Target Audiences"
+	}
 ]
