@@ -67,7 +67,8 @@ grow_vertical = 2
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 
-[node name="Title" type="LineEdit" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/TitleBox"]
+[node name="GameTitle" type="LineEdit" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/TitleBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,6 +209,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 icon = SubResource("GradientTexture2D_05euk")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ConfirmGameCreationBox" type="Control" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationShortcutsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ConfirmGameCreationButton" type="Button" parent="TwoColumnsContainer/GameOptionCategoryBox/VBoxContainer/GameCreationShortcutsContainer/ConfirmGameCreationBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Confirm & Begin Game!"
 icon_alignment = 1
 expand_icon = true
 
