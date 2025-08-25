@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using NathanColeman.IndieGameDev.Models;
+using NathanColeman.IndieGameDev.Ui;
 
 namespace NathanColeman.IndieGameDev.Backend;
 
@@ -27,7 +28,7 @@ public partial class GameController : Node
         set
         {
             _currentProject = value;
-            SetMenuBar(_currentProject);
+            GameUiController.SetMenuBar(_currentProject);
         }
     }
 
@@ -38,13 +39,13 @@ public partial class GameController : Node
         set => _currentSpeed = value;
     }
 
-    private Control? _uiRoot;
-    public Control UiRoot
+    private GameUiController? _gameUiController;
+    public GameUiController GameUiController
     {
         get
         {
-            _uiRoot ??= GetTree().Root.GetNode<Control>("GameUI");
-            return _uiRoot;
+            _gameUiController ??= GetTree().Root.GetNode<GameUiController>("GameUi/GameUiController");
+            return _gameUiController;
         }
     }
 
@@ -64,12 +65,9 @@ public partial class GameController : Node
 
     public void StartGame(GameCreationPayload gameCreationPayload)
     {
-        CurrentProject = ProjectType.Game;
-    }
+        if (gameCreationPayload.IsValid == false) return;
 
-    private void SetMenuBar(ProjectType currentProject)
-    {
-        var topLayoutBox = UiRoot.GetNode<TabContainer>("TopLayoutBox");
-        topLayoutBox.CurrentTab = (int)currentProject;
+        CurrentProject = ProjectType.Game;
+        GameUiController.SetGameName(gameCreationPayload.Name!);
     }
 }

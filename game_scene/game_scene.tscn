@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://crgt8odc06uei"]
+[gd_scene load_steps=11 format=3 uid="uid://crgt8odc06uei"]
 
+[ext_resource type="Script" uid="uid://crogw0icyiuwc" path="res://game_scene/GameUiController.cs" id="1_7ps1j"]
 [ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://resources/assets/game_logo/icon.png" id="4_xb203"]
 [ext_resource type="Script" uid="uid://c64aq6ba605j8" path="res://game_scene/CenterContentController.cs" id="5_05euk"]
 [ext_resource type="Script" uid="uid://bqndy2iluye68" path="res://addons/resize_to_fit_children_control/ResizeToFitChildrenControl.cs" id="5_ap5n0"]
@@ -20,13 +21,16 @@ fill_to = Vector2(0.25, 0.25)
 metadata/_snap_enabled = true
 metadata/_snap_count = 8
 
-[node name="GameUI" type="Control"]
+[node name="GameUi" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GameUiController" type="Node" parent="."]
+script = ExtResource("1_7ps1j")
 
 [node name="LeftSideLayoutBox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -46,6 +50,7 @@ _setYMode = 1
 _useChildYMode = 2
 
 [node name="BubblesBoxController" type="Node" parent="LeftSideLayoutBox/BubblesBox"]
+unique_name_in_owner = true
 script = ExtResource("5_j8flk")
 _bubbleBarItemPrefab = ExtResource("5_ducuf")
 
@@ -483,15 +488,15 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="ActiveDevelopmentMenuContainer" type="HBoxContainer" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer"]
+[node name="GameDevelopmentMenuContainer" type="HBoxContainer" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="ProjectNameBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+[node name="GameNameBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer"]
 custom_minimum_size = Vector2(260, 40)
 layout_mode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/ProjectNameBox"]
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/GameNameBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -499,7 +504,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/ProjectNameBox"]
+[node name="GameNameLabel" type="Label" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/GameNameBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -516,11 +522,11 @@ text = "Currently Working on: Game #1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentCostBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+[node name="CurrentCostBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer"]
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/CurrentCostBox"]
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/CurrentCostBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -528,7 +534,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/CurrentCostBox"]
+[node name="CurrentCostLabel" type="Label" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/CurrentCostBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -545,11 +552,11 @@ text = "Cost: $1,000,000,000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AddFeaturesBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+[node name="AddFeaturesBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer"]
 custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/AddFeaturesBox"]
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/AddFeaturesBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -557,7 +564,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AddFeaturesButton" type="Button" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/AddFeaturesBox"]
+[node name="AddFeaturesButton" type="Button" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/AddFeaturesBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
