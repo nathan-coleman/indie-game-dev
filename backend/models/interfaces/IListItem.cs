@@ -1,6 +1,6 @@
 namespace IndieGameDev.Models;
 
-public interface IListItemModel
+public interface IListItem
 {
     public string Name { get; set; }
     public string Description { get; set; }

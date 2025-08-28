@@ -1,24 +1,22 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 using IndieGameDev.Models;
 using IndieGameDev.Utils;
-using Newtonsoft.Json;
+using IndieGameDev.Backend;
 
 namespace IndieGameDev.Game.UI;
 
 public partial class CreateGameController : Node
 {
-    private const string DEFAULT_ICON_PATH = "res://resources/assets/game_logo/icon.png";
+    [Export] private PackedScene? _largeGridItemPrefab;
 
-    [Export] PackedScene? _largeGridItemPrefab;
-
-    private TabContainer? gameOptionSelectionTabContainer;
+    private TabContainer? _optionsContainer;
+    private GameCreationPayload _gameCreationPayload = new();
 
     public override void _Ready()
     {
-        gameOptionSelectionTabContainer = GetNode<TabContainer>("%GameOptionSelectionTabContainer");
+        _optionsContainer = GetNode<TabContainer>("%GameOptionSelectionTabContainer");
 
         ConnectButtons();
         LoadData();
@@ -32,12 +30,29 @@ public partial class CreateGameController : Node
         GetNode<Button>("%OpenPlatformPaneButton").Pressed += () => SetTab(3);
         GetNode<Button>("%OpenGraphicsPaneButton").Pressed += () => SetTab(4);
         GetNode<Button>("%OpenAudiencePaneButton").Pressed += () => SetTab(5);
+        GetNode<Button>("%ConfirmGameCreationButton").Pressed += ConfirmGame;
+    }
+
+    private void ConfirmGame()
+    {
+        _gameCreationPayload.Name = GetNode<LineEdit>("%GameTitle").Text;
+
+        if (!_gameCreationPayload.IsValid)
+        {
+            GD.PrintErr("Game is not complete!");
+            return;
+        }
+
+        GetNode<LineEdit>("%GameTitle").Text = null;
+
+        GameController.Instance.StartGame(_gameCreationPayload);
+        GetParent().GetParent<CenterContentController>().CloseUi();
     }
 
     private void SetTab(int tabIndex)
     {
-        ArgumentNullException.ThrowIfNull(gameOptionSelectionTabContainer);
-        gameOptionSelectionTabContainer.CurrentTab = tabIndex;
+        ArgumentNullException.ThrowIfNull(_optionsContainer);
+        _optionsContainer.CurrentTab = tabIndex;
     }
 
     private void LoadData()
@@ -51,71 +66,77 @@ public partial class CreateGameController : Node
 
     private void LoadScopeOptions()
     {
-        var gameScopes = LoadJsonAsObject<List<GameScope>>("res://resources/data/GameScopes.json");
-        var gameScopeSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("ScopeSelectionBox/GridContainer");
-        InstantiateListItems(gameScopes.Cast<IListItemModel>(), gameScopeSelectionContainer, ScopeSelected);
+        var gameScopes = GameController.Instance.DataLoader.LoadListItems<List<GameScope>>("GameScopes");
+        var gameScopeSelectionContainer = _optionsContainer?.GetNode<GridContainer>("ScopeSelectionBox/GridContainer");
+        InstantiateListItems(gameScopes, gameScopeSelectionContainer, ScopeSelected);
     }
 
-    private void ScopeSelected(IListItemModel selected)
+    private void ScopeSelected(GameScope selected)
     {
+        _gameCreationPayload.Scope = selected;
         GetNode<Button>("%OpenScopePaneButton").Text = $"Scope: {selected.Name}";
         GetNode<Button>("%OpenScopePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
     }
 
     private void LoadGenreOptions()
     {
-        var gameGenres = LoadJsonAsObject<List<GameGenre>>("res://resources/data/GameGenres.json");
-        var gameGenreSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("GenreSelectionBox/GridContainer");
-        InstantiateListItems(gameGenres.Cast<IListItemModel>(), gameGenreSelectionContainer, GenreSelected);
+        var gameGenres = GameController.Instance.DataLoader.LoadListItems<List<GameGenre>>("GameGenres");
+        var gameGenreSelectionContainer = _optionsContainer?.GetNode<GridContainer>("GenreSelectionBox/GridContainer");
+        InstantiateListItems(gameGenres, gameGenreSelectionContainer, GenreSelected);
     }
 
-    private void GenreSelected(IListItemModel selected)
+    private void GenreSelected(GameGenre selected)
     {
+        _gameCreationPayload.Genre = selected;
         GetNode<Button>("%OpenGenrePaneButton").Text = $"Genre: {selected.Name}";
         GetNode<Button>("%OpenGenrePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
     }
 
     private void LoadTopicOptions()
     {
-        var gameTopics = LoadJsonAsObject<List<GameTopic>>("res://resources/data/GameTopics.json");
-        var gameTopicSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("TopicSelectionBox/GridContainer");
-        InstantiateListItems(gameTopics.Cast<IListItemModel>(), gameTopicSelectionContainer, TopicSelected);
+        var gameTopics = GameController.Instance.DataLoader.LoadListItems<List<GameTopic>>("GameTopics");
+        var gameTopicSelectionContainer = _optionsContainer?.GetNode<GridContainer>("TopicSelectionBox/GridContainer");
+        InstantiateListItems(gameTopics, gameTopicSelectionContainer, TopicSelected);
     }
 
-    private void TopicSelected(IListItemModel selected)
+    private void TopicSelected(GameTopic selected)
     {
+        _gameCreationPayload.Topic = selected;
         GetNode<Button>("%OpenTopicPaneButton").Text = $"Topic: {selected.Name}";
         GetNode<Button>("%OpenTopicPaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
     }
 
     private void LoadPlatformOptions()
     {
-        var gamePlatforms = LoadJsonAsObject<List<GamePlatform>>("res://resources/data/GamePlatforms.json");
-        var gamePlatformSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("PlatformSelectionBox/GridContainer");
-        InstantiateListItems(gamePlatforms.Cast<IListItemModel>(), gamePlatformSelectionContainer, PlatformSelected);
+        var gamePlatforms = GameController.Instance.DataLoader.LoadListItems<List<GamePlatform>>("GamePlatforms");
+        var gamePlatformSelectionContainer = _optionsContainer?.GetNode<GridContainer>("PlatformSelectionBox/GridContainer");
+        InstantiateListItems(gamePlatforms, gamePlatformSelectionContainer, PlatformSelected);
     }
 
-    private void PlatformSelected(IListItemModel selected)
+    private void PlatformSelected(GamePlatform selected)
     {
+        _gameCreationPayload.Platform = selected;
         GetNode<Button>("%OpenPlatformPaneButton").Text = $"Platform: {selected.Name}";
         GetNode<Button>("%OpenPlatformPaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
     }
 
     private void LoadAudienceOptions()
     {
-        var gameAudiences = LoadJsonAsObject<List<GameAudience>>("res://resources/data/GameAudiences.json");
-        var gameAudienceSelectionContainer = gameOptionSelectionTabContainer?.GetNode<GridContainer>("AudienceSelectionBox/GridContainer");
-        InstantiateListItems(gameAudiences.Cast<IListItemModel>(), gameAudienceSelectionContainer, AudienceSelected);
+        var gameAudiences = GameController.Instance.DataLoader.LoadListItems<List<GameAudience>>("GameAudiences");
+        var gameAudienceSelectionContainer = _optionsContainer?.GetNode<GridContainer>("AudienceSelectionBox/GridContainer");
+        InstantiateListItems(gameAudiences, gameAudienceSelectionContainer, AudienceSelected);
     }
 
-    private void AudienceSelected(IListItemModel selected)
+    private void AudienceSelected(GameAudience selected)
     {
+        _gameCreationPayload.Audience = selected;
         GetNode<Button>("%OpenAudiencePaneButton").Text = $"Game Audience: {selected.Name}";
         GetNode<Button>("%OpenAudiencePaneButton").TooltipText = $"{selected.Name}: {selected.Description}";
     }
 
-    private void InstantiateListItems(IEnumerable<IListItemModel> listData, Control? instantiationParent, Action<IListItemModel>? buttonPressedCallback)
+    private void InstantiateListItems<T>(IEnumerable<T>? listData, Control? instantiationParent, Action<T>? buttonPressedCallback) where T : IListItem
     {
+        ArgumentNullException.ThrowIfNull(listData);
         ArgumentNullException.ThrowIfNull(instantiationParent);
         ArgumentNullException.ThrowIfNull(_largeGridItemPrefab);
 
@@ -124,28 +145,15 @@ public partial class CreateGameController : Node
         foreach (var listItem in listData)
         {
             var gridItem = _largeGridItemPrefab.Instantiate<LargeGridItem>();
-
             gridItem.ItemName = listItem.Name;
             gridItem.ItemDescription = listItem.Description;
-            gridItem.ItemIcon = ResourceLoader.Load<Texture2D>(listItem.IconPath ?? DEFAULT_ICON_PATH);
+            gridItem.ItemIcon = ResourceLoader.Load<Texture2D>(listItem.IconPath);
+            instantiationParent.AddChild(gridItem);
+
             if (buttonPressedCallback != null)
             {
                 gridItem.Pressed += () => buttonPressedCallback(listItem);
             }
-
-            instantiationParent.AddChild(gridItem);
         }
-    }
-
-    private static T LoadJsonAsObject<T>(string filePath)
-    {
-        using var file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
-        if (file == null) throw new JsonException($"Error loading '{filePath}': {FileAccess.GetOpenError()}");
-
-        var rawJson = file.GetAsText();
-        var deserializedObject = JsonConvert.DeserializeObject<T>(rawJson);
-        if (deserializedObject == null) throw new JsonException($"Error deserializing json in '{filePath}' to {typeof(T)}");
-
-        return deserializedObject;
     }
 }

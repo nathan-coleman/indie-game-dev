@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace IndieGameDev.Models;
 
-public record GameGenre : IListItemModel
+public record GamePlatform : IListItem
 {
     [JsonProperty(Required = Required.Always)]
     public required string Name { get; set; }
@@ -12,9 +12,5 @@ public record GameGenre : IListItemModel
     [JsonProperty(Required = Required.Always)]
     public required IReadOnlyDictionary<string, float> BubbleEffectiveness { get; set; }
     public string? IconPath { get; set; }
-    public string? ParentGenre { get; set; }
     public string? TechnologyPrerequisite { get; set; }
-
-    [JsonIgnore]
-    public bool IsSubGenre { get => !string.IsNullOrEmpty(ParentGenre); }
 }
