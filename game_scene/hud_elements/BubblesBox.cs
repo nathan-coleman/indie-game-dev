@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-namespace IndieGameDev.Game.UI;
+namespace NathanColeman.IndieGameDev.Ui;
 
 public partial class BubblesBox : Node
 {

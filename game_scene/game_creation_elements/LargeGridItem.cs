@@ -1,8 +1,8 @@
 using System;
 using Godot;
-using TheGrandJaggard.Addons.ResizeToFitChildrenControl;
+using NathanColeman.Addons.ResizeToFitChildrenControl;
 
-namespace IndieGameDev.Game.UI;
+namespace NathanColeman.IndieGameDev.Ui;
 
 [Tool]
 public partial class LargeGridItem : ResizeToFitChildrenControl

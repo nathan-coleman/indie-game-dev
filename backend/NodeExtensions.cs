@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace IndieGameDev.Utils;
+namespace NathanColeman.IndieGameDev.Utils;
 
 public static class NodeExtensions
 {

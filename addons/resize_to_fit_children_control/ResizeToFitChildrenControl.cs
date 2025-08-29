@@ -1,6 +1,6 @@
 using Godot;
 
-namespace TheGrandJaggard.Addons.ResizeToFitChildrenControl;
+namespace NathanColeman.Addons.ResizeToFitChildrenControl;
 
 public enum SizeMode
 {

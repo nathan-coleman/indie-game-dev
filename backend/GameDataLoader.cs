@@ -1,9 +1,9 @@
 using Godot;
 using Newtonsoft.Json;
-using IndieGameDev.Models;
+using NathanColeman.IndieGameDev.Models;
 using System.Collections.Generic;
 
-namespace IndieGameDev.Backend;
+namespace NathanColeman.IndieGameDev.Backend;
 
 public class GameDataLoader(
     string _rootDataPath,

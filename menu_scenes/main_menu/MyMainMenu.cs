@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace IndieGameDev.Menus;
+namespace NathanColeman.IndieGameDev.Ui;
 
 public partial class MyMainMenu : Control
 {
