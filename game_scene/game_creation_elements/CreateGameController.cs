@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Godot;
-using IndieGameDev.Models;
-using IndieGameDev.Utils;
-using IndieGameDev.Backend;
+using NathanColeman.IndieGameDev.Models;
+using NathanColeman.IndieGameDev.Utils;
+using NathanColeman.IndieGameDev.Backend;
 
-namespace IndieGameDev.Game.UI;
+namespace NathanColeman.IndieGameDev.Ui;
 
 public partial class CreateGameController : Node
 {

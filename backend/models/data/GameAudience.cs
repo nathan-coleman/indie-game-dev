@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IndieGameDev.Models;
+namespace NathanColeman.IndieGameDev.Models;
 
 public record GameAudience : IListItem
 {

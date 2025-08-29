@@ -1,6 +1,6 @@
 using Godot;
 
-namespace IndieGameDev.Game.UI;
+namespace NathanColeman.IndieGameDev.Ui;
 
 public partial class CenterContentController : TabContainer
 {

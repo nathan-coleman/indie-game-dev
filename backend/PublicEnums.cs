@@ -1,4 +1,4 @@
-namespace IndieGameDev.Backend;
+namespace NathanColeman.IndieGameDev.Backend;
 
 public enum ProjectType
 {

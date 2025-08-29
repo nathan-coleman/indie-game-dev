@@ -1,4 +1,4 @@
-namespace IndieGameDev.Models
+namespace NathanColeman.IndieGameDev.Models
 {
     public record GameCreationPayload
     {

@@ -2,7 +2,7 @@
 using System.Linq;
 using Godot;
 
-namespace TheGrandJaggard.Addons.ResizeToFitChildrenControl;
+namespace NathanColeman.Addons.ResizeToFitChildrenControl;
 
 [Tool]
 public partial class Plugin : EditorPlugin

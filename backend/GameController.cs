@@ -1,8 +1,8 @@
 using System;
 using Godot;
-using IndieGameDev.Models;
+using NathanColeman.IndieGameDev.Models;
 
-namespace IndieGameDev.Backend;
+namespace NathanColeman.IndieGameDev.Backend;
 
 public partial class GameController : Node
 {
