@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crgt8odc06uei"]
+[gd_scene load_steps=10 format=3 uid="uid://crgt8odc06uei"]
 
 [ext_resource type="Script" uid="uid://crogw0icyiuwc" path="res://game_scene/GameUiController.cs" id="1_7ps1j"]
 [ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://resources/assets/game_logo/icon.png" id="4_xb203"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bqndy2iluye68" path="res://addons/resize_to_fit_children_control/ResizeToFitChildrenControl.cs" id="5_ap5n0"]
 [ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
 [ext_resource type="PackedScene" uid="uid://dixk4sdsfxhw0" path="res://game_scene/game_creation_elements/create_game_ui.tscn" id="5_e0oqy"]
-[ext_resource type="Script" uid="uid://b0lx6s55mura4" path="res://game_scene/hud_elements/BubblesBox.cs" id="5_j8flk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05euk"]
 
@@ -31,6 +30,7 @@ grow_vertical = 2
 
 [node name="GameUiController" type="Node" parent="."]
 script = ExtResource("1_7ps1j")
+_bubbleBarItemPrefab = ExtResource("5_ducuf")
 
 [node name="LeftSideLayoutBox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -48,11 +48,6 @@ layout_mode = 2
 script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
-
-[node name="BubblesBoxController" type="Node" parent="LeftSideLayoutBox/BubblesBox"]
-unique_name_in_owner = true
-script = ExtResource("5_j8flk")
-_bubbleBarItemPrefab = ExtResource("5_ducuf")
 
 [node name="BackgroundPanel" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
 layout_mode = 1

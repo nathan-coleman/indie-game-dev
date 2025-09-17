@@ -69,5 +69,11 @@ public partial class GameController : Node
 
         CurrentProject = ProjectType.Game;
         GameUiController.SetGameName(gameCreationPayload.Name!);
+        GameUiController.InitializeBubblesBox();
+    }
+
+    public void AddBubbles(string bubbleName, int amount)
+    {
+        GameUiController.AddBubbles(bubbleName, amount);
     }
 }
