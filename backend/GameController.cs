@@ -39,6 +39,17 @@ public partial class GameController : Node
         set => _currentSpeed = value;
     }
 
+    private GameClock? _gameClock;
+    public GameClock GameClock
+    {
+        get
+        {
+            _gameClock ??= new GameClock(new(1, 1, 1), false);
+            return _gameClock;
+        }
+        set => _gameClock = value;
+    }
+
     private GameUiController? _gameUiController;
     public GameUiController GameUiController
     {
@@ -61,6 +72,11 @@ public partial class GameController : Node
             GD.PrintErr("Two instances of GameController cannot coexist! Aborting game.");
             GetTree().Quit();
         }
+    }
+
+    public override void _Process(double delta)
+    {
+        GameClock.Process(delta);
     }
 
     public void StartGame(GameCreationPayload gameCreationPayload)

@@ -12,6 +12,14 @@ public partial class GameUiController : Node
 {
     [Export] private PackedScene? _bubbleBarItemPrefab;
 
+    public override void _Ready()
+    {
+        GameController.Instance.GameClock.Start();
+        GameController.Instance.GameClock.DateChanged += SetDate;
+        SetDate(GameController.Instance.GameClock.Date);
+    }
+
+
     public void SetMenuBar(ProjectType currentProject)
     {
         var topLayoutBox = GetNode<TabContainer>("../TopLayoutBox");
@@ -57,5 +65,11 @@ public partial class GameUiController : Node
         }
 
         itemToUpdate.BubbleAmount += amount;
+    }
+
+    public void SetDate(DateOnly date)
+    {
+        var dateDisplayLabel = GetNode<Label>("%DateDisplayLabel");
+        dateDisplayLabel.Text = $"The {date.DayOrdinal()} of {date:MMMM}, year {date.Year}";
     }
 }
