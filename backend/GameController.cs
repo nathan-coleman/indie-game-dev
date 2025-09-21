@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using NathanColeman.IndieGameDev.Models;
+using NathanColeman.IndieGameDev.Ui;
 
 namespace NathanColeman.IndieGameDev.Backend;
 
@@ -27,7 +28,7 @@ public partial class GameController : Node
         set
         {
             _currentProject = value;
-            SetMenuBar(_currentProject);
+            GameUiController.SetMenuBar(_currentProject);
         }
     }
 
@@ -38,13 +39,24 @@ public partial class GameController : Node
         set => _currentSpeed = value;
     }
 
-    private Control? _uiRoot;
-    public Control UiRoot
+    private GameClock? _gameClock;
+    public GameClock GameClock
     {
         get
         {
-            _uiRoot ??= GetTree().Root.GetNode<Control>("GameUI");
-            return _uiRoot;
+            _gameClock ??= new GameClock(new(1, 1, 1), false);
+            return _gameClock;
+        }
+        set => _gameClock = value;
+    }
+
+    private GameUiController? _gameUiController;
+    public GameUiController GameUiController
+    {
+        get
+        {
+            _gameUiController ??= GetTree().Root.GetNode<GameUiController>("GameUi/GameUiController");
+            return _gameUiController;
         }
     }
 
@@ -62,14 +74,22 @@ public partial class GameController : Node
         }
     }
 
-    public void StartGame(GameCreationPayload gameCreationPayload)
+    public override void _Process(double delta)
     {
-        CurrentProject = ProjectType.Game;
+        GameClock.Process(delta);
     }
 
-    private void SetMenuBar(ProjectType currentProject)
+    public void StartGame(GameCreationPayload gameCreationPayload)
     {
-        var topLayoutBox = UiRoot.GetNode<TabContainer>("TopLayoutBox");
-        topLayoutBox.CurrentTab = (int)currentProject;
+        if (gameCreationPayload.IsValid == false) return;
+
+        CurrentProject = ProjectType.Game;
+        GameUiController.SetGameName(gameCreationPayload.Name!);
+        GameUiController.InitializeBubblesBox();
+    }
+
+    public void AddBubbles(string bubbleName, int amount)
+    {
+        GameUiController.AddBubbles(bubbleName, amount);
     }
 }

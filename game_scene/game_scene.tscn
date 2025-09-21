@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://crgt8odc06uei"]
 
+[ext_resource type="Script" uid="uid://crogw0icyiuwc" path="res://game_scene/GameUiController.cs" id="1_7ps1j"]
 [ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://resources/assets/game_logo/icon.png" id="4_xb203"]
 [ext_resource type="Script" uid="uid://c64aq6ba605j8" path="res://game_scene/CenterContentController.cs" id="5_05euk"]
 [ext_resource type="Script" uid="uid://bqndy2iluye68" path="res://addons/resize_to_fit_children_control/ResizeToFitChildrenControl.cs" id="5_ap5n0"]
 [ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
 [ext_resource type="PackedScene" uid="uid://dixk4sdsfxhw0" path="res://game_scene/game_creation_elements/create_game_ui.tscn" id="5_e0oqy"]
-[ext_resource type="Script" uid="uid://b0lx6s55mura4" path="res://game_scene/hud_elements/BubblesBox.cs" id="5_j8flk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05euk"]
 
@@ -20,13 +20,17 @@ fill_to = Vector2(0.25, 0.25)
 metadata/_snap_enabled = true
 metadata/_snap_count = 8
 
-[node name="GameUI" type="Control"]
+[node name="GameUi" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GameUiController" type="Node" parent="."]
+script = ExtResource("1_7ps1j")
+_bubbleBarItemPrefab = ExtResource("5_ducuf")
 
 [node name="LeftSideLayoutBox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -44,10 +48,6 @@ layout_mode = 2
 script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
-
-[node name="BubblesBoxController" type="Node" parent="LeftSideLayoutBox/BubblesBox"]
-script = ExtResource("5_j8flk")
-_bubbleBarItemPrefab = ExtResource("5_ducuf")
 
 [node name="BackgroundPanel" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
 layout_mode = 1
@@ -211,6 +211,26 @@ anchor_bottom = 1.0
 layout_mode = 2
 alignment = 1
 
+[node name="CalendarBox" type="Control" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
+custom_minimum_size = Vector2(215, 40)
+layout_mode = 2
+script = ExtResource("5_ap5n0")
+_setXMode = 1
+_useChildXMode = 2
+metadata/_custom_type_script = "uid://bqndy2iluye68"
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalendarBox"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="DateDisplayLabel" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalendarBox/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "The 1st of January, year 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AvailableCashBox" type="Control" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
 custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
@@ -237,35 +257,6 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "$1,000,000,000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CalendarBox" type="Control" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer"]
-custom_minimum_size = Vector2(140, 40)
-layout_mode = 2
-
-[node name="BackgroundPanel" type="Panel" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalendarBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="BottomLayoutBox/BottomMenuBox/MarginContainer/BottomMenuContainer/CalendarBox"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -57.0
-offset_top = -11.5
-offset_right = 57.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "2025-07-20"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -483,15 +474,15 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="ActiveDevelopmentMenuContainer" type="HBoxContainer" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer"]
+[node name="GameDevelopmentMenuContainer" type="HBoxContainer" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="ProjectNameBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+[node name="GameNameBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer"]
 custom_minimum_size = Vector2(260, 40)
 layout_mode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/ProjectNameBox"]
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/GameNameBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -499,7 +490,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/ProjectNameBox"]
+[node name="GameNameLabel" type="Label" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/GameNameBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -516,11 +508,11 @@ text = "Currently Working on: Game #1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CurrentCostBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+[node name="CurrentCostBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer"]
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/CurrentCostBox"]
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/CurrentCostBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -528,7 +520,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/CurrentCostBox"]
+[node name="CurrentCostLabel" type="Label" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/CurrentCostBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -545,11 +538,11 @@ text = "Cost: $1,000,000,000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AddFeaturesBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer"]
+[node name="AddFeaturesBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer"]
 custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/AddFeaturesBox"]
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/AddFeaturesBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -557,7 +550,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AddFeaturesButton" type="Button" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/ActiveDevelopmentMenuContainer/AddFeaturesBox"]
+[node name="AddFeaturesButton" type="Button" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/AddFeaturesBox"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
