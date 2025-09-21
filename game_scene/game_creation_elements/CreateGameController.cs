@@ -67,7 +67,7 @@ public partial class CreateGameController : Node
     private void LoadScopeOptions()
     {
         var gameScopes = GameController.Instance.DataLoader.LoadListItems<List<GameScope>>("GameScopes");
-        var gameScopeSelectionContainer = _optionsContainer?.GetNode<GridContainer>("ScopeSelectionBox/GridContainer");
+        var gameScopeSelectionContainer = _optionsContainer?.GetNode<GridContainer>("ScopeSelectionBox/MarginContainer/GridContainer");
         InstantiateListItems(gameScopes, gameScopeSelectionContainer, ScopeSelected);
     }
 
@@ -81,7 +81,7 @@ public partial class CreateGameController : Node
     private void LoadGenreOptions()
     {
         var gameGenres = GameController.Instance.DataLoader.LoadListItems<List<GameGenre>>("GameGenres");
-        var gameGenreSelectionContainer = _optionsContainer?.GetNode<GridContainer>("GenreSelectionBox/GridContainer");
+        var gameGenreSelectionContainer = _optionsContainer?.GetNode<GridContainer>("GenreSelectionBox/MarginContainer/GridContainer");
         InstantiateListItems(gameGenres, gameGenreSelectionContainer, GenreSelected);
     }
 
@@ -95,7 +95,7 @@ public partial class CreateGameController : Node
     private void LoadTopicOptions()
     {
         var gameTopics = GameController.Instance.DataLoader.LoadListItems<List<GameTopic>>("GameTopics");
-        var gameTopicSelectionContainer = _optionsContainer?.GetNode<GridContainer>("TopicSelectionBox/GridContainer");
+        var gameTopicSelectionContainer = _optionsContainer?.GetNode<GridContainer>("TopicSelectionBox/MarginContainer/GridContainer");
         InstantiateListItems(gameTopics, gameTopicSelectionContainer, TopicSelected);
     }
 
@@ -109,7 +109,7 @@ public partial class CreateGameController : Node
     private void LoadPlatformOptions()
     {
         var gamePlatforms = GameController.Instance.DataLoader.LoadListItems<List<GamePlatform>>("GamePlatforms");
-        var gamePlatformSelectionContainer = _optionsContainer?.GetNode<GridContainer>("PlatformSelectionBox/GridContainer");
+        var gamePlatformSelectionContainer = _optionsContainer?.GetNode<GridContainer>("PlatformSelectionBox/MarginContainer/GridContainer");
         InstantiateListItems(gamePlatforms, gamePlatformSelectionContainer, PlatformSelected);
     }
 
@@ -123,7 +123,7 @@ public partial class CreateGameController : Node
     private void LoadAudienceOptions()
     {
         var gameAudiences = GameController.Instance.DataLoader.LoadListItems<List<GameAudience>>("GameAudiences");
-        var gameAudienceSelectionContainer = _optionsContainer?.GetNode<GridContainer>("AudienceSelectionBox/GridContainer");
+        var gameAudienceSelectionContainer = _optionsContainer?.GetNode<GridContainer>("AudienceSelectionBox/MarginContainer/GridContainer");
         InstantiateListItems(gameAudiences, gameAudienceSelectionContainer, AudienceSelected);
     }
 
