@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 namespace NathanColeman.IndieGameDev.Ui;
@@ -44,5 +45,17 @@ public partial class BubbleBarItem : Control
             bubbleProgressBar.TooltipText = value;
             TooltipText = value;
         }
+    }
+
+    public event Action BubbleAdded
+    {
+        add => GetNode<Button>("%AddButton").Pressed += value;
+        remove => GetNode<Button>("%AddButton").Pressed -= value;
+    }
+
+    public event Action BubbleRemoved
+    {
+        add => GetNode<Button>("%RemoveButton").Pressed += value;
+        remove => GetNode<Button>("%RemoveButton").Pressed -= value;
     }
 }

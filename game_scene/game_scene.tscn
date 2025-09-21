@@ -42,14 +42,15 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="BubblesBox" type="Control" parent="LeftSideLayoutBox"]
+[node name="BubbleBarBox" type="Control" parent="LeftSideLayoutBox"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
+[node name="BackgroundPanel" type="Panel" parent="LeftSideLayoutBox/BubbleBarBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,17 +58,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="LeftSideLayoutBox/BubblesBox"]
+[node name="MarginContainer" type="MarginContainer" parent="LeftSideLayoutBox/BubbleBarBox"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="BubbleBarContainer" type="VBoxContainer" parent="LeftSideLayoutBox/BubblesBox/MarginContainer"]
+[node name="BubbleBarContainer" type="VBoxContainer" parent="LeftSideLayoutBox/BubbleBarBox/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="DummyBubbleBarItem" parent="LeftSideLayoutBox/BubblesBox/MarginContainer/BubbleBarContainer" instance=ExtResource("5_ducuf")]
+[node name="DummyBubbleBarItem" parent="LeftSideLayoutBox/BubbleBarBox/MarginContainer/BubbleBarContainer" instance=ExtResource("5_ducuf")]
 layout_mode = 2
 tooltip_text = "This is a dummy category, but a useful description belongs here!"
 

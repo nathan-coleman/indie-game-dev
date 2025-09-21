@@ -34,6 +34,7 @@ public partial class GameUiController : Node
     public void InitializeBubblesBox()
     {
         ArgumentNullException.ThrowIfNull(_bubbleBarItemPrefab);
+        GetNode<Control>("%BubbleBarBox").Show();
 
         var bubbleBarContainer = GetNode<Control>("%BubbleBarContainer");
         bubbleBarContainer.QueueFreeChildren();
@@ -47,6 +48,8 @@ public partial class GameUiController : Node
             newBubbleBarItem.BubbleName = bubbleType.Name;
             newBubbleBarItem.BubbleAmount = 0;
             newBubbleBarItem.BubbleDescription = bubbleType.Description;
+            newBubbleBarItem.BubbleAdded += () => GameController.Instance.AddBubbles(bubbleType.Name, 1);
+            newBubbleBarItem.BubbleRemoved += () => GameController.Instance.AddBubbles(bubbleType.Name, -1);
 
             bubbleBarContainer.AddChild(newBubbleBarItem);
         }
