@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dchco5v4mmmlh"]
+
+[ext_resource type="PackedScene" uid="uid://b10npsji1x5pl" path="res://game_scene/game_creation_elements/large_grid_item.tscn" id="1_cny7l"]
+
+[node name="ItemSelectionBox" type="ScrollContainer"]
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="LargeGridItem" parent="MarginContainer/GridContainer" instance=ExtResource("1_cny7l")]
+layout_mode = 2
+
+[node name="LargeGridItem2" parent="MarginContainer/GridContainer" instance=ExtResource("1_cny7l")]
+layout_mode = 2
+
+[node name="LargeGridItem3" parent="MarginContainer/GridContainer" instance=ExtResource("1_cny7l")]
+layout_mode = 2
+
+[node name="LargeGridItem4" parent="MarginContainer/GridContainer" instance=ExtResource("1_cny7l")]
+layout_mode = 2
