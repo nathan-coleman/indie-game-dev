@@ -55,6 +55,14 @@ public partial class GameUiController : Node
         }
     }
 
+    public void DeinitializeBubblesBox()
+    {
+        GetNode<Control>("%BubbleBarBox").Hide();
+
+        var bubbleBarContainer = GetNode<Control>("%BubbleBarContainer");
+        bubbleBarContainer.QueueFreeChildren();
+    }
+
     public void AddBubbles(string bubbleName, int amount)
     {
         var bubbleBarContainer = GetNode<Control>("%BubbleBarContainer");

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using NathanColeman.IndieGameDev.Models;
 using NathanColeman.IndieGameDev.Ui;
@@ -7,6 +8,7 @@ namespace NathanColeman.IndieGameDev.Backend;
 
 public partial class GameController : Node
 {
+#region Singleton-likes
     private static GameController? _gameControllerInstance;
     public static GameController Instance
     {
@@ -59,6 +61,22 @@ public partial class GameController : Node
             return _gameUiController;
         }
     }
+#endregion
+
+    private GameCompletionPayload? _activeGame;
+    public GameCompletionPayload CurrentGame
+    {
+        get
+        {
+            if (CurrentProject != ProjectType.Game) GD.PushError("ActiveGame should be accessed when current project is not a game");
+            if (_activeGame == null) throw new NullReferenceException("ActiveGame can not be be accessed when _activeGame is null");
+            return _activeGame;
+        }
+        set
+        {
+            _activeGame = value;
+        }
+    }
 
     public override void _Ready()
     {
@@ -84,12 +102,33 @@ public partial class GameController : Node
         if (gameCreationPayload.IsValid == false) return;
 
         CurrentProject = ProjectType.Game;
+        CurrentGame = new GameCompletionPayload(gameCreationPayload);
+
+        var bubbleTypes = DataLoader.LoadData<List<BubbleType>>("BubbleTypes");
+        foreach (var bubbleType in bubbleTypes)
+        {
+            CurrentGame.BubbleValues.Add(bubbleType.Name, 0);
+        }
+
         GameUiController.SetGameName(gameCreationPayload.Name!);
         GameUiController.InitializeBubblesBox();
     }
 
     public void AddBubbles(string bubbleName, int amount)
     {
+        ArgumentNullException.ThrowIfNull(CurrentGame.BubbleValues);
+
+        CurrentGame.BubbleValues[bubbleName] += amount;
         GameUiController.AddBubbles(bubbleName, amount);
+    }
+
+    public void FinishGame()
+    {
+        // if (gameCreationPayload.IsValid == false) return;
+
+        CurrentProject = ProjectType.None;
+        // ArchivedGames = CurrentGame;
+
+        GameUiController.DeinitializeBubblesBox();
     }
 }
