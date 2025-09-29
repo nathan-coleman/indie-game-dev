@@ -2,49 +2,38 @@
 	{
 		"Name": "PC",
 		"Description": "",
-		"BubbleEffectiveness": {
-			"Story":        0.9,
-			"Engine":       0.1,
-			"Art":          0.7,
-			"Mechanics":    0.1,
-			"Sound":        0.5,
-			"Level Design": 0.7
+		"GenreAffinities": {
+			"Adventure":       0.5,
+			"Point-and-Click": 0.4,
+			"Strategy":        0.9,
+			"Test":            1.0
 		}
 	},
 	{
 		"Name": "Console",
 		"Description": "",
-		"BubbleEffectiveness": {
-			"Story":        0.2,
-			"Engine":       0.5,
-			"Art":          0.5,
-			"Mechanics":    0.7,
-			"Sound":        0.5,
-			"Level Design": 0.3
+		"GenreAffinities": {
+			"Adventure":       0.5,
+			"Strategy":        0.7,
+			"Test":            1.0
 		}
 	},
 	{
 		"Name": "Mobile",
 		"Description": "",
-		"BubbleEffectiveness": {
-			"Story":        0.2,
-			"Engine":       0.5,
-			"Art":          0.5,
-			"Mechanics":    0.7,
-			"Sound":        0.5,
-			"Level Design": 0.3
+		"GenreAffinities": {
+			"Adventure":       0.7,
+			"Strategy":        0.4,
+			"Test":            1.0
 		}
 	},
 	{
 		"Name": "Arcade",
 		"Description": "",
-		"BubbleEffectiveness": {
-			"Story":        0.2,
-			"Engine":       0.5,
-			"Art":          0.5,
-			"Mechanics":    0.7,
-			"Sound":        0.5,
-			"Level Design": 0.3
+		"GenreAffinities": {
+			"Adventure":       0.1,
+			"Strategy":        0.1,
+			"Test":            0.1
 		}
 	}
 ]

@@ -2,37 +2,46 @@
 	{
 		"Name": "Wild West",
 		"Description": "",
-		"BubbleEffectiveness": {
-			"Story":        0.9,
-			"Engine":       0.1,
-			"Art":          0.7,
-			"Mechanics":    0.1,
-			"Sound":        0.5,
-			"Level Design": 0.7
+		"AudienceAffinities": {
+			"Everyone": 0.6,
+			"Children": 0.5,
+			"Teens":    0.7,
+			"Adult":    0.8
+		},
+		"GenreAffinities": {
+			"Adventure":       0.8,
+			"Strategy":        0.4,
+			"Test":            1.0
 		}
 	},
 	{
 		"Name": "Sci-Fi",
 		"Description": "",
-		"BubbleEffectiveness": {
-			"Story":        0.2,
-			"Engine":       0.5,
-			"Art":          0.5,
-			"Mechanics":    0.7,
-			"Sound":        0.5,
-			"Level Design": 0.3
+		"AudienceAffinities": {
+			"Everyone": 0.8,
+			"Children": 0.5,
+			"Teens":    0.7,
+			"Adult":    0.7
+		},
+		"GenreAffinities": {
+			"Adventure":       0.8,
+			"Strategy":        0.6,
+			"Test":            0.4
 		}
 	},
 	{
 		"Name": "Aliens",
 		"Description": "",
-		"BubbleEffectiveness": {
-			"Story":        0.2,
-			"Engine":       0.5,
-			"Art":          0.5,
-			"Mechanics":    0.7,
-			"Sound":        0.5,
-			"Level Design": 0.3
+		"AudienceAffinities": {
+			"Everyone": 0.4,
+			"Children": 0.3,
+			"Teens":    0.8,
+			"Adult":    0.8
+		},
+		"GenreAffinities": {
+			"Adventure":       0.8,
+			"Strategy":        0.5,
+			"Test":            0.1
 		}
 	}
 ]

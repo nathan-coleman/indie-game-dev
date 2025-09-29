@@ -10,7 +10,7 @@ public record GameGenre : IListItem
     [JsonProperty(Required = Required.Always)]
     public required string Description { get; set; }
     [JsonProperty(Required = Required.Always)]
-    public required IReadOnlyDictionary<string, float> BubbleEffectiveness { get; set; }
+    public required IReadOnlyDictionary<string, float> BubbleAffinities { get; set; }
     public string? IconPath { get; set; }
     public string? ParentGenre { get; set; }
     public string? TechnologyPrerequisite { get; set; }
