@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 using NathanColeman.IndieGameDev.Models;
 
@@ -37,6 +39,7 @@ public static class ScoreCalculator
         var audience = gameCompletionPayload.Audience.Name;
         if (topicAudienceAffinities.TryGetValue(audience, out float topicAudienceAffinity))
         {
+            GD.Print($"TopicToAudience: adding {topicAudienceAffinity * TopicToAudienceAffinityWeight} to {totalScore}, adding {TopicToAudienceAffinityWeight} to {maximumScore}");
             totalScore += topicAudienceAffinity * TopicToAudienceAffinityWeight;
             maximumScore += TopicToAudienceAffinityWeight;
         }
@@ -51,6 +54,7 @@ public static class ScoreCalculator
         var genre = gameCompletionPayload.Genre.Name;
         if (topicGenreAffinities.TryGetValue(genre, out float topicGenreAffinity))
         {
+            GD.Print($"TopicToGenre: adding {topicGenreAffinity * TopicToGenreAffinityWeight} to {totalScore}, adding {TopicToGenreAffinityWeight} to {maximumScore}");
             totalScore += topicGenreAffinity * TopicToGenreAffinityWeight;
             maximumScore += TopicToGenreAffinityWeight;
         }
@@ -64,27 +68,48 @@ public static class ScoreCalculator
         // TODO
 
         // GenreToBubbleValues
-        var genreBubbleAffinities = gameCompletionPayload.Genre.BubbleAffinities;
+        var genreExpectedBubbles = gameCompletionPayload.Genre.ExpectedBubbles;
         var gameBubbleValues = gameCompletionPayload.BubbleValues;
 
-        var genreToBubbleValuesTotalScore = 0f;
+        var genreBubblesSuccess = new Dictionary<string, double>();
 
-        foreach (var genreBubbleAffinity in genreBubbleAffinities)
+        foreach (var genreExpectedBubble in genreExpectedBubbles)
         {
-            if (gameBubbleValues.TryGetValue(genreBubbleAffinity.Key, out int gameBubbleValue))
+            if (gameBubbleValues.TryGetValue(genreExpectedBubble.Key, out int gameBubbleValue))
             {
-                genreToBubbleValuesTotalScore += gameBubbleValue * genreBubbleAffinity.Value;
+                GD.Print($"GenreToBubbleValues: adding {BubbleClosenessMultiplier(gameBubbleValue, genreExpectedBubble.Value)}, for {genreExpectedBubble.Key}");
+                genreBubblesSuccess[genreExpectedBubble.Key] = BubbleClosenessMultiplier(gameBubbleValue, genreExpectedBubble.Value);
             }
             else
             {
-                GD.PrintErr($"Bubble type '{genreBubbleAffinity.Key}' is not in games's bubble value list."
+                GD.PrintErr($"Bubble type '{genreExpectedBubble.Key}' is not in games's bubble value list."
                     + " It will not be used in the score calculation.");
             }
         }
 
-        totalScore += genreToBubbleValuesTotalScore * GenreToBubbleAffinityWeight;
+        GD.Print($"GenreToBubbleValues: adding {genreBubblesSuccess.Values.Sum() / genreBubblesSuccess.Count * GenreToBubbleAffinityWeight} to {totalScore}, adding {GenreToBubbleAffinityWeight} to {maximumScore}");
+
+        totalScore += (float)genreBubblesSuccess.Values.Sum() / genreBubblesSuccess.Count * GenreToBubbleAffinityWeight;
         maximumScore += GenreToBubbleAffinityWeight;
 
+        GD.Print($"Total score: {totalScore}/{maximumScore}");
+
         return maximumScore <= 0 ? 0 : totalScore / maximumScore;
+    }
+
+    /// <summary>
+    /// Given BubbleValue/BubbleExpectedValue,
+    /// returns the score out of 1 for that bubble.
+    /// Exceptional bubble values can return up to 1.1.
+    /// </summary>
+    /// <returns>A value between 0 and 1.1.</returns>
+    private static double BubbleClosenessMultiplier(double bubbleValue, double bubbleExpectedValue)
+    {
+        // Combines two sigmoid curves to score closeness of bubble value to expected value.
+        // Exceptional bubble values can score slightly above 1.0 (up to 1.1).
+        if (bubbleExpectedValue == 0) return 1.1;
+        double longSigmoid = 1.0 / (1.0 + Math.Exp(-4.0 * ((bubbleValue / bubbleExpectedValue) - 0.2)));
+        double shortSigmoid = 1.0 / (1.0 + Math.Exp(-(6.9 * (bubbleValue / bubbleExpectedValue) - 4.0)));
+        return longSigmoid * shortSigmoid * 1.1;
     }
 }

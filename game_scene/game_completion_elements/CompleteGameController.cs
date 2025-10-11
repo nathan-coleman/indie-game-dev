@@ -1,4 +1,5 @@
 using Godot;
+using NathanColeman.IndieGameDev.Backend;
 
 namespace NathanColeman.IndieGameDev.Ui;
 
@@ -11,8 +12,8 @@ public partial class CompleteGameController : Node
 
     public void SetScore(float score)
     {
-        var dateDisplayLabel = GetNode<Label>("%GameScoreLabel");
-        dateDisplayLabel.Text = $"Your game achieved a score of {score:F2}!";
+        var gameScoreLabel = GetNode<Label>("%GameScoreLabel");
+        gameScoreLabel.Text = $"Your game achieved a score of {score:F2}!";
     }
 
     private void ConnectButtons()
@@ -22,6 +23,6 @@ public partial class CompleteGameController : Node
 
     private void CloseMenu()
     {
-        // center ui layout controller and call Close, same as default CloseButton
+        GameController.Instance.GameUiController.HideCenterContent();
     }
 }

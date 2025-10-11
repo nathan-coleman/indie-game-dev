@@ -2,26 +2,31 @@
 	{
 		"Name": "Game Jam",
 		"Description": "",
-		"CompletionTime": 4
+		"CompletionTime": 4,
+		"ExpectedBubblesMultiplier": 1
 	},
 	{
 		"Name": "Small Game",
 		"Description": "",
-		"CompletionTime": 12
+		"CompletionTime": 12,
+		"ExpectedBubblesMultiplier": 3
 	},
 	{
 		"Name": "Medium Game",
 		"Description": "",
-		"CompletionTime": 24
+		"CompletionTime": 24,
+		"ExpectedBubblesMultiplier": 6
 	},
 	{
 		"Name": "Large Game",
 		"Description": "",
-		"CompletionTime": 48
+		"CompletionTime": 48,
+		"ExpectedBubblesMultiplier": 12
 	},
 	{
 		"Name": "AAA Game",
 		"Description": "",
-		"CompletionTime": 96
+		"CompletionTime": 96,
+		"ExpectedBubblesMultiplier": 24
 	}
 ]

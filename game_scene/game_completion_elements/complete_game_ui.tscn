@@ -36,9 +36,10 @@ text = "Your game achieved a score of {score:F2}!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScopeBox" type="Control" parent="."]
+[node name="Box" type="Control" parent="."]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -50,7 +51,7 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="CloseButton" type="Button" parent="ScopeBox"]
+[node name="CloseButton" type="Button" parent="Box"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

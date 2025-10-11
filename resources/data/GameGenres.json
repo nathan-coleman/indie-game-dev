@@ -3,51 +3,51 @@
 		"Name": "Adventure",
 		"Description": "Adventure games are about discovery and story.",
 		"ParentGenre": null,
-		"BubbleAffinities": {
-			"Story":        0.9,
-			"Engine":       0.1,
-			"Art":          0.7,
-			"Mechanics":    0.1,
-			"Sound":        0.5,
-			"Level Design": 0.7
+		"ExpectedBubbles": {
+			"Story":        35,
+			"Engine":       5,
+			"Art":          15,
+			"Mechanics":    10,
+			"Sound":        10,
+			"Level Design": 25
 		}
 	},
 	{
 		"Name": "Point-and-Click",
 		"Description": "I'm realizing that AI might be able to write these descriptions for me.",
 		"ParentGenre": "Adventure",
-		"BubbleAffinities": {
-			"Story":        0.9,
-			"Engine":       0.1,
-			"Art":          0.7,
-			"Mechanics":    0.1,
-			"Sound":        0.5,
-			"Level Design": 0.7
+		"ExpectedBubbles": {
+			"Story":        25,
+			"Engine":       5,
+			"Art":          20,
+			"Mechanics":    5,
+			"Sound":        10,
+			"Level Design": 35
 		},
 		"TechnologyPrerequisite": "Sub-Genres"
 	},
 	{
 		"Name": "Strategy",
 		"Description": "",
-		"BubbleAffinities": {
-			"Story":        0.2,
-			"Engine":       0.9,
-			"Art":          0.4,
-			"Mechanics":    0.8,
-			"Sound":        0.3,
-			"Level Design": 0.4
+		"ExpectedBubbles": {
+			"Story":        5,
+			"Engine":       25,
+			"Art":          10,
+			"Mechanics":    25,
+			"Sound":        10,
+			"Level Design": 25
 		}
 	},
 	{
 		"Name": "Test",
 		"Description": "Used for testing only.",
-		"BubbleAffinities": {
-			"Story":        0.5,
-			"Engine":       0.5,
-			"Art":          0.5,
-			"Mechanics":    0.5,
-			"Sound":        0.5,
-			"Level Design": 0.5
+		"ExpectedBubbles": {
+			"Story":        15,
+			"Engine":       20,
+			"Art":          15,
+			"Mechanics":    20,
+			"Sound":        15,
+			"Level Design": 15
 		}
 	}
 ]

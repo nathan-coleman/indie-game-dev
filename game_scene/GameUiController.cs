@@ -97,4 +97,10 @@ public partial class GameUiController : Node
         var completeGameController = _centerContentTabContainer.OpenCompleteGameUi();
         completeGameController.SetScore(gameScore);
     }
+
+    public void HideCenterContent()
+    {
+        ArgumentNullException.ThrowIfNull(_centerContentTabContainer);
+        _centerContentTabContainer.CloseUi();
+    }
 }

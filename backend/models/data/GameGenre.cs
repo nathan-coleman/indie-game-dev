@@ -9,8 +9,9 @@ public record GameGenre : IListItem
     public required string Name { get; set; }
     [JsonProperty(Required = Required.Always)]
     public required string Description { get; set; }
+    /// <remarks>Total should add up to 100.</remarks>
     [JsonProperty(Required = Required.Always)]
-    public required IReadOnlyDictionary<string, float> BubbleAffinities { get; set; }
+    public required IReadOnlyDictionary<string, int> ExpectedBubbles { get; set; }
     public string? IconPath { get; set; }
     public string? ParentGenre { get; set; }
     public string? TechnologyPrerequisite { get; set; }
