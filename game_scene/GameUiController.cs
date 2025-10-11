@@ -11,14 +11,21 @@ namespace NathanColeman.IndieGameDev.Ui;
 public partial class GameUiController : Node
 {
     [Export] private PackedScene? _bubbleBarItemPrefab;
+    [Export] private CenterContentController? _centerContentTabContainer;
 
     public override void _Ready()
     {
         GameController.Instance.GameClock.Start();
         GameController.Instance.GameClock.DateChanged += SetDate;
         SetDate(GameController.Instance.GameClock.Date);
+
+        ConnectButtons();
     }
 
+    private void ConnectButtons()
+    {
+        GetNode<Button>("%CompleteDevelopmentButton").Pressed += GameController.Instance.CompleteGame;
+    }
 
     public void SetMenuBar(ProjectType currentProject)
     {
@@ -82,5 +89,12 @@ public partial class GameUiController : Node
     {
         var dateDisplayLabel = GetNode<Label>("%DateDisplayLabel");
         dateDisplayLabel.Text = $"The {date.DayOrdinal()} of {date:MMMM}, year {date.Year}";
+    }
+
+    public void ShowCompleteGameBox(float gameScore)
+    {
+        ArgumentNullException.ThrowIfNull(_centerContentTabContainer);
+        var completeGameController = _centerContentTabContainer.OpenCompleteGameUi();
+        completeGameController.SetScore(gameScore);
     }
 }

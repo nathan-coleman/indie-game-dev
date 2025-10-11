@@ -82,7 +82,7 @@ public partial class GameController : Node
     {
         if (_gameControllerInstance == null)
         {
-            GD.Print("Setting Instance to this.");
+            GD.Print("Setting GameController instance.");
             _gameControllerInstance = this;
         }
         else
@@ -122,12 +122,16 @@ public partial class GameController : Node
         GameUiController.AddBubbles(bubbleName, amount);
     }
 
-    public void FinishGame()
+    public void CompleteGame()
     {
-        // if (gameCreationPayload.IsValid == false) return;
+        if (CurrentProject != ProjectType.Game) throw new InvalidOperationException("Cannot complete game when current project is not a game");
+        // if (CurrentGame.IsValid == false) return;
+
+        var gameScore = ScoreCalculator.CalculateScore(CurrentGame);
+        GameUiController.ShowCompleteGameBox(gameScore);
 
         CurrentProject = ProjectType.None;
-        // ArchivedGames = CurrentGame;
+        // ArchivedGames += CurrentGame;
 
         GameUiController.DeinitializeBubblesBox();
     }
