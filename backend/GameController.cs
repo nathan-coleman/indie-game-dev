@@ -1,8 +1,10 @@
-using System;
-using System.Collections.Generic;
-using Godot;
 using NathanColeman.IndieGameDev.Models;
 using NathanColeman.IndieGameDev.Ui;
+using NathanColeman.IndieGameDev.Utils.Serilog;
+using Godot;
+using Serilog;
+using System;
+using System.Collections.Generic;
 
 namespace NathanColeman.IndieGameDev.Backend;
 
@@ -14,6 +16,27 @@ public partial class GameController : Node
     {
         get => _gameControllerInstance ?? throw new InvalidOperationException($"GameController Instance is null!");
         private set => _gameControllerInstance = value;
+    }
+
+    private ILogger? _logger;
+    public ILogger Logger
+    {
+        get
+        {
+            if (_logger == null)
+            {
+                var configuration = new LoggerConfiguration();
+                configuration.WriteTo.Sink(new GodotSink());
+
+                if (OS.IsDebugBuild()) configuration.MinimumLevel.Debug();
+                else configuration.MinimumLevel.Information();
+
+                _logger = configuration.CreateLogger();
+                _logger.Information("Logger initiallized");
+            }
+
+            return _logger;
+        }
     }
 
     private GameDataLoader _dataLoader = new GameDataLoader("res://resources/data");
