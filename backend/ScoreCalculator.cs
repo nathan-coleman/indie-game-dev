@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Godot;
 using NathanColeman.IndieGameDev.Models;
 
 namespace NathanColeman.IndieGameDev.Backend;
@@ -39,13 +38,13 @@ public static class ScoreCalculator
         var audience = gameCompletionPayload.Audience.Name;
         if (topicAudienceAffinities.TryGetValue(audience, out float topicAudienceAffinity))
         {
-            GD.Print($"TopicToAudience: adding {topicAudienceAffinity * TopicToAudienceAffinityWeight} to {totalScore}, adding {TopicToAudienceAffinityWeight} to {maximumScore}");
+            GameController.Instance.Logger.Debug($"TopicToAudience: adding {topicAudienceAffinity * TopicToAudienceAffinityWeight} to {totalScore}, adding {TopicToAudienceAffinityWeight} to {maximumScore}.");
             totalScore += topicAudienceAffinity * TopicToAudienceAffinityWeight;
             maximumScore += TopicToAudienceAffinityWeight;
         }
         else
         {
-            GD.PrintErr($"Audience '{audience}' is not in topic's audience affinity list."
+            GameController.Instance.Logger.Error($"Audience '{audience}' is not in topic's audience affinity list."
                 + " It will not be used in the score calculation.");
         }
 
@@ -54,13 +53,13 @@ public static class ScoreCalculator
         var genre = gameCompletionPayload.Genre.Name;
         if (topicGenreAffinities.TryGetValue(genre, out float topicGenreAffinity))
         {
-            GD.Print($"TopicToGenre: adding {topicGenreAffinity * TopicToGenreAffinityWeight} to {totalScore}, adding {TopicToGenreAffinityWeight} to {maximumScore}");
+            GameController.Instance.Logger.Debug($"TopicToGenre: adding {topicGenreAffinity * TopicToGenreAffinityWeight} to {totalScore}, adding {TopicToGenreAffinityWeight} to {maximumScore}.");
             totalScore += topicGenreAffinity * TopicToGenreAffinityWeight;
             maximumScore += TopicToGenreAffinityWeight;
         }
         else
         {
-            GD.PrintErr($"Genre '{genre}' is not in topic's genre affinity list."
+            GameController.Instance.Logger.Error($"Genre '{genre}' is not in topic's genre affinity list."
                 + " It will not be used in the score calculation.");
         }
 
@@ -77,22 +76,22 @@ public static class ScoreCalculator
         {
             if (gameBubbleValues.TryGetValue(genreExpectedBubble.Key, out int gameBubbleValue))
             {
-                GD.Print($"GenreToBubbleValues: adding {BubbleClosenessMultiplier(gameBubbleValue, genreExpectedBubble.Value)}, for {genreExpectedBubble.Key}");
+                GameController.Instance.Logger.Debug($"GenreToBubbleValues: adding {BubbleClosenessMultiplier(gameBubbleValue, genreExpectedBubble.Value)}, for {genreExpectedBubble.Key}.");
                 genreBubblesSuccess[genreExpectedBubble.Key] = BubbleClosenessMultiplier(gameBubbleValue, genreExpectedBubble.Value);
             }
             else
             {
-                GD.PrintErr($"Bubble type '{genreExpectedBubble.Key}' is not in games's bubble value list."
+                GameController.Instance.Logger.Error($"Bubble type '{genreExpectedBubble.Key}' is not in games's bubble value list."
                     + " It will not be used in the score calculation.");
             }
         }
 
-        GD.Print($"GenreToBubbleValues: adding {genreBubblesSuccess.Values.Sum() / genreBubblesSuccess.Count * GenreToBubbleAffinityWeight} to {totalScore}, adding {GenreToBubbleAffinityWeight} to {maximumScore}");
+        GameController.Instance.Logger.Debug($"GenreToBubbleValues: adding {genreBubblesSuccess.Values.Sum() / genreBubblesSuccess.Count * GenreToBubbleAffinityWeight} to {totalScore}, adding {GenreToBubbleAffinityWeight} to {maximumScore}.");
 
         totalScore += (float)genreBubblesSuccess.Values.Sum() / genreBubblesSuccess.Count * GenreToBubbleAffinityWeight;
         maximumScore += GenreToBubbleAffinityWeight;
 
-        GD.Print($"Total score: {totalScore}/{maximumScore}");
+        GameController.Instance.Logger.Information($"Total game score: {totalScore}/{maximumScore}.");
 
         return maximumScore <= 0 ? 0 : totalScore / maximumScore;
     }

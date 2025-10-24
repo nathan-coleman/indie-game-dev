@@ -39,7 +39,7 @@ public partial class CreateGameController : Node
 
         if (!_gameCreationPayload.IsValid)
         {
-            GD.PrintErr("Game is not complete!");
+            GameController.Instance.Logger.Error("Game is not complete!");
             return;
         }
 
