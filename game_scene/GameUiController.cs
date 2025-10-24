@@ -78,7 +78,7 @@ public partial class GameUiController : Node
 
         if (itemToUpdate == null)
         {
-            GD.PrintErr($"Could not add {amount} bubbles to '{bubbleName}': a bubble bar of type '{bubbleName}' could not be found.");
+            GameController.Instance.Logger.Error($"Could not add {amount} bubbles to '{bubbleName}': a bubble bar of type '{bubbleName}' could not be found.");
             return;
         }
 
