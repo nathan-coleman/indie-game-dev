@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crgt8odc06uei"]
+[gd_scene load_steps=11 format=3 uid="uid://crgt8odc06uei"]
 
 [ext_resource type="Script" uid="uid://crogw0icyiuwc" path="res://game_scene/GameUiController.cs" id="1_7ps1j"]
 [ext_resource type="Texture2D" uid="uid://b7j11kgjjt1fl" path="res://resources/assets/game_logo/icon.png" id="4_xb203"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bqndy2iluye68" path="res://addons/resize_to_fit_children_control/ResizeToFitChildrenControl.cs" id="5_ap5n0"]
 [ext_resource type="PackedScene" uid="uid://23pse4dcm0r4" path="res://game_scene/hud_elements/bubble_bar_item.tscn" id="5_ducuf"]
 [ext_resource type="PackedScene" uid="uid://dixk4sdsfxhw0" path="res://game_scene/game_creation_elements/create_game_ui.tscn" id="5_e0oqy"]
+[ext_resource type="PackedScene" uid="uid://d11fr60eptrac" path="res://game_scene/game_completion_elements/complete_game_ui.tscn" id="7_7ps1j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05euk"]
 
@@ -28,9 +29,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameUiController" type="Node" parent="."]
+[node name="GameUiController" type="Node" parent="." node_paths=PackedStringArray("_centerContentTabContainer")]
 script = ExtResource("1_7ps1j")
 _bubbleBarItemPrefab = ExtResource("5_ducuf")
+_centerContentTabContainer = NodePath("../CenterContentLayoutBox/CenterContentTabContainer")
 
 [node name="LeftSideLayoutBox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -42,14 +44,15 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="BubblesBox" type="Control" parent="LeftSideLayoutBox"]
+[node name="BubbleBarBox" type="Control" parent="LeftSideLayoutBox"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 script = ExtResource("5_ap5n0")
 _setYMode = 1
 _useChildYMode = 2
 
-[node name="BackgroundPanel" type="Panel" parent="LeftSideLayoutBox/BubblesBox"]
+[node name="BackgroundPanel" type="Panel" parent="LeftSideLayoutBox/BubbleBarBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,17 +60,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="LeftSideLayoutBox/BubblesBox"]
+[node name="MarginContainer" type="MarginContainer" parent="LeftSideLayoutBox/BubbleBarBox"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="BubbleBarContainer" type="VBoxContainer" parent="LeftSideLayoutBox/BubblesBox/MarginContainer"]
+[node name="BubbleBarContainer" type="VBoxContainer" parent="LeftSideLayoutBox/BubbleBarBox/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="DummyBubbleBarItem" parent="LeftSideLayoutBox/BubblesBox/MarginContainer/BubbleBarContainer" instance=ExtResource("5_ducuf")]
+[node name="DummyBubbleBarItem" parent="LeftSideLayoutBox/BubbleBarBox/MarginContainer/BubbleBarContainer" instance=ExtResource("5_ducuf")]
 layout_mode = 2
 tooltip_text = "This is a dummy category, but a useful description belongs here!"
 
@@ -563,6 +566,31 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
+[node name="CompleteDevelopmentBox" type="Control" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer"]
+custom_minimum_size = Vector2(140, 40)
+layout_mode = 2
+
+[node name="BackgroundPanel" type="Panel" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/CompleteDevelopmentBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CompleteDevelopmentButton" type="Button" parent="TopLayoutBox/GameDevelopmentMenuBox/MarginContainer/GameDevelopmentMenuContainer/CompleteDevelopmentBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Finish Project"
+flat = true
+icon_alignment = 1
+expand_icon = true
+
 [node name="CenterContentLayoutBox" type="Control" parent="."]
 layout_mode = 1
 anchor_left = 0.3
@@ -603,14 +631,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_05euk")
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 deselect_enabled = true
 script = ExtResource("5_05euk")
 
 [node name="CreateGameBox" parent="CenterContentLayoutBox/CenterContentTabContainer" instance=ExtResource("5_e0oqy")]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="CompleteGameBox" parent="CenterContentLayoutBox/CenterContentTabContainer" instance=ExtResource("7_7ps1j")]
+layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="CenterContentLayoutBox"]
 layout_mode = 1

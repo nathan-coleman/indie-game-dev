@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using NathanColeman.IndieGameDev.Models;
 using NathanColeman.IndieGameDev.Ui;
@@ -7,6 +8,7 @@ namespace NathanColeman.IndieGameDev.Backend;
 
 public partial class GameController : Node
 {
+#region Singleton-likes
     private static GameController? _gameControllerInstance;
     public static GameController Instance
     {
@@ -59,12 +61,28 @@ public partial class GameController : Node
             return _gameUiController;
         }
     }
+#endregion
+
+    private GameCompletionPayload? _activeGame;
+    public GameCompletionPayload CurrentGame
+    {
+        get
+        {
+            if (CurrentProject != ProjectType.Game) GD.PushError("ActiveGame should be accessed when current project is not a game");
+            if (_activeGame == null) throw new NullReferenceException("ActiveGame can not be be accessed when _activeGame is null");
+            return _activeGame;
+        }
+        set
+        {
+            _activeGame = value;
+        }
+    }
 
     public override void _Ready()
     {
         if (_gameControllerInstance == null)
         {
-            GD.Print("Setting Instance to this.");
+            GD.Print("Setting GameController instance.");
             _gameControllerInstance = this;
         }
         else
@@ -84,12 +102,37 @@ public partial class GameController : Node
         if (gameCreationPayload.IsValid == false) return;
 
         CurrentProject = ProjectType.Game;
+        CurrentGame = new GameCompletionPayload(gameCreationPayload);
+
+        var bubbleTypes = DataLoader.LoadData<List<BubbleType>>("BubbleTypes");
+        foreach (var bubbleType in bubbleTypes)
+        {
+            CurrentGame.BubbleValues.Add(bubbleType.Name, 0);
+        }
+
         GameUiController.SetGameName(gameCreationPayload.Name!);
         GameUiController.InitializeBubblesBox();
     }
 
     public void AddBubbles(string bubbleName, int amount)
     {
+        ArgumentNullException.ThrowIfNull(CurrentGame.BubbleValues);
+
+        CurrentGame.BubbleValues[bubbleName] += amount;
         GameUiController.AddBubbles(bubbleName, amount);
+    }
+
+    public void CompleteGame()
+    {
+        if (CurrentProject != ProjectType.Game) throw new InvalidOperationException("Cannot complete game when current project is not a game");
+        // if (CurrentGame.IsValid == false) return;
+
+        var gameScore = ScoreCalculator.CalculateScore(CurrentGame);
+        GameUiController.ShowCompleteGameBox(gameScore);
+
+        CurrentProject = ProjectType.None;
+        // ArchivedGames += CurrentGame;
+
+        GameUiController.DeinitializeBubblesBox();
     }
 }

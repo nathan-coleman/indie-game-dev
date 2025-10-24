@@ -11,14 +11,21 @@ namespace NathanColeman.IndieGameDev.Ui;
 public partial class GameUiController : Node
 {
     [Export] private PackedScene? _bubbleBarItemPrefab;
+    [Export] private CenterContentController? _centerContentTabContainer;
 
     public override void _Ready()
     {
         GameController.Instance.GameClock.Start();
         GameController.Instance.GameClock.DateChanged += SetDate;
         SetDate(GameController.Instance.GameClock.Date);
+
+        ConnectButtons();
     }
 
+    private void ConnectButtons()
+    {
+        GetNode<Button>("%CompleteDevelopmentButton").Pressed += GameController.Instance.CompleteGame;
+    }
 
     public void SetMenuBar(ProjectType currentProject)
     {
@@ -34,6 +41,7 @@ public partial class GameUiController : Node
     public void InitializeBubblesBox()
     {
         ArgumentNullException.ThrowIfNull(_bubbleBarItemPrefab);
+        GetNode<Control>("%BubbleBarBox").Show();
 
         var bubbleBarContainer = GetNode<Control>("%BubbleBarContainer");
         bubbleBarContainer.QueueFreeChildren();
@@ -47,9 +55,19 @@ public partial class GameUiController : Node
             newBubbleBarItem.BubbleName = bubbleType.Name;
             newBubbleBarItem.BubbleAmount = 0;
             newBubbleBarItem.BubbleDescription = bubbleType.Description;
+            newBubbleBarItem.BubbleAdded += () => GameController.Instance.AddBubbles(bubbleType.Name, 1);
+            newBubbleBarItem.BubbleRemoved += () => GameController.Instance.AddBubbles(bubbleType.Name, -1);
 
             bubbleBarContainer.AddChild(newBubbleBarItem);
         }
+    }
+
+    public void DeinitializeBubblesBox()
+    {
+        GetNode<Control>("%BubbleBarBox").Hide();
+
+        var bubbleBarContainer = GetNode<Control>("%BubbleBarContainer");
+        bubbleBarContainer.QueueFreeChildren();
     }
 
     public void AddBubbles(string bubbleName, int amount)
@@ -71,5 +89,18 @@ public partial class GameUiController : Node
     {
         var dateDisplayLabel = GetNode<Label>("%DateDisplayLabel");
         dateDisplayLabel.Text = $"The {date.DayOrdinal()} of {date:MMMM}, year {date.Year}";
+    }
+
+    public void ShowCompleteGameBox(float gameScore)
+    {
+        ArgumentNullException.ThrowIfNull(_centerContentTabContainer);
+        var completeGameController = _centerContentTabContainer.OpenCompleteGameUi();
+        completeGameController.SetScore(gameScore);
+    }
+
+    public void HideCenterContent()
+    {
+        ArgumentNullException.ThrowIfNull(_centerContentTabContainer);
+        _centerContentTabContainer.CloseUi();
     }
 }

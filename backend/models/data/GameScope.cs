@@ -10,6 +10,9 @@ public record GameScope : IListItem
     public required string Description { get; set; }
     [JsonProperty(Required = Required.Always)]
     public int CompletionTime { get; set; }
+    /// <remarks>Base expected bubbles is 100.</remarks>
+    [JsonProperty(Required = Required.Always)]
+    public int ExpectedBubblesMultiplier { get; set; }
     public string? IconPath { get; set; }
     public string? TechnologyPrerequisite { get; set; }
 }
