@@ -1,4 +1,5 @@
 using Godot;
+using NathanColeman.IndieGameDev.Backend;
 
 namespace NathanColeman.Addons.ResizeToFitChildrenControl;
 
@@ -83,23 +84,23 @@ public partial class ResizeToFitChildrenControl : Control
     {
         if (_setXMode == SizeMode.MinimumSize && CustomMinimumSize.X != newControlSize.X)
         {
-            GD.Print($"Setting X component of custom minimum size of {Name} to {newControlSize.X}");
+            GameController.Instance.Logger.Debug($"Setting X component of custom minimum size of {Name} to {newControlSize.X}");
             CustomMinimumSize = new Vector2(newControlSize.X, CustomMinimumSize.Y);
         }
         else if (_setXMode == SizeMode.ActualSize && Size.X != newControlSize.X)
         {
-            GD.Print($"Setting X component of size of {Name} to {newControlSize.X}");
+            GameController.Instance.Logger.Debug($"Setting X component of size of {Name} to {newControlSize.X}");
             Size = new Vector2(newControlSize.X, Size.Y);
         }
 
         if (_setYMode == SizeMode.MinimumSize && CustomMinimumSize.Y != newControlSize.Y)
         {
-            GD.Print($"Setting Y component of custom minimum size of {Name} to {newControlSize.Y}");
+            GameController.Instance.Logger.Debug($"Setting Y component of custom minimum size of {Name} to {newControlSize.Y}");
             CustomMinimumSize = new Vector2(CustomMinimumSize.X, newControlSize.Y);
         }
         else if (_setYMode == SizeMode.ActualSize && Size.Y != newControlSize.Y)
         {
-            GD.Print($"Setting Y component of size of {Name} to {newControlSize.Y}");
+            GameController.Instance.Logger.Debug($"Setting Y component of size of {Name} to {newControlSize.Y}");
             Size = new Vector2(Size.X, newControlSize.Y);
         }
     }
