@@ -29,14 +29,7 @@ This is a work in progress, and needs to go a long ways before it is as fun as i
 - Add additional game add-ons such as DLCs, sequels, merch, in-game purchases, and intellectual property.
 - Add mod support.
 
-## How to Contribute
-### Explore the source code
-Always feel free to explore the source code, fix bugs, or help contribute!
-Playing the game is as simple as clone the repository and opening the project in Godot Engine 4.4 Mono. Ensure that git submodules are initialized as well. At this point you can easily edit GDscripts, however editing & building the C# scripts may take some more work.
-
-### Playtest the game
-This game is not yet in a playable state, so cannot yet be playtested.
-
+## [How to Contribute](CONTRIBUTING.md)
 ### Get in contact
 I will always welcome, feedback, ideas, and just a friendly conversation. You can email me at nathan@nathan-coleman.com or join me on discord.
 
